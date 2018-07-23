@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ app.name }}</title>
+    <script>
+      const data = {{ app.content | raw }}
+    </script>
+  </head>
+
+  <body>
+    <h1>{{ app.name }}</h1>
+    <div>
+      {{ app.name }}
+      {{ app.licence }}
+      {{ app.price }}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+rules:
+  - pattern: '/'
+    data:
+      # apps: 'https://api.github.com/repos/feramhq/cli-apps/contents/apps'
+      apps:
+        type: file
+        fetch: all
+        path: './apps/*.yaml'
+    template: 'index.html'
+
+  - pattern: '/static/{{path:**}}'
+    data:
+      file: 'file://./static/{{path}}'
+    static: true
+
+  - pattern: '/images/{{path:**}}'
+    data:
+      file: 'file://./images/{{path}}'
+    static: true
+
+  - pattern: '/apps/{{name:*}}'
+    data:
+      app: 'file://apps/{{name}}'
+      # app:
+      #   type: 'https'
+      #   uri: 'https://raw.githubusercontent.com/feramhq/cli-apps/master/apps/{{name}}'
+      #   uri: 'https://api.github.com/repos/feramhq/cli-apps/contents/apps/{{name}}'
+      #   force-mime-type: 'text/x-yaml'
+    template: 'app.html'
+
+
