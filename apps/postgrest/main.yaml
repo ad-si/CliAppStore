@@ -1,5 +1,7 @@
 name: Postgrest
 slug: postgrest
-description:
-license:
-price:
+description: |
+  A standalone web server that turns a PostgreSQL database into a RESTful API.
+url: http://postgrest.org
+license: MIT
+price: Free

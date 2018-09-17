@@ -1,5 +1,9 @@
 name: Mosh
 slug: mosh
-description:
+description: |
+  Remote terminal app with support for roaming,
+  intermittent connectivity,
+  intelligent local echo, and line editing
+url: https://mosh.org
 license:
-price:
+price: Free

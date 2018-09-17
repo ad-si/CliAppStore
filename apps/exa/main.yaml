@@ -1,5 +1,6 @@
 name: Exa
 slug: exa
-description:
-license:
-price:
+description: A modern replacement for ls
+url: https://the.exa.website
+license: MIT
+price: Free
