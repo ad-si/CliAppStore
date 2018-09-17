@@ -16,29 +16,6 @@
   </head>
   <body>
     <header>
-      <div class="collapse bg-dark" id="navbarHeader">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-8 col-md-7 py-4">
-              <h4 class="text-white">About</h4>
-              <p class="text-muted">
-                Add some information about the album below, the author,
-                or any other background context.
-                Make it a few sentences long so folks can pick up some informative tidbits.
-                Then, link them off to some social networking sites or contact information.
-              </p>
-            </div>
-            <div class="col-sm-4 offset-md-1 py-4">
-              <h4 class="text-white">Contact</h4>
-              <ul class="list-unstyled">
-                <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                <li><a href="#" class="text-white">Like on Facebook</a></li>
-                <li><a href="#" class="text-white">Email me</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="navbar navbar-dark bg-dark box-shadow">
         <div class="container d-flex justify-content-between">
           <a href="#" class="navbar-brand d-flex align-items-center">
@@ -64,20 +41,10 @@
             </svg>
 
             <strong>
-              <span style="font-variant: small-caps">Cli</span>App
+              <!-- <span style="font-variant: small-caps">CliApp.Store</span> -->
+              CliApp.Store
             </strong>
           </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarHeader"
-            aria-controls="navbarHeader"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
         </div>
       </div>
     </header>
@@ -110,29 +77,38 @@
           <div class="row">
 
             {% for app in apps %}
+              {% set slug = app.slug | urlencode %}
+              {% set appUrl = '/apps/' ~ slug %}
+
               <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
                   <!-- <img
                     class="card-img-top"
                     data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
                     alt="Card image cap"> -->
-                  <p>
-                    <a href="/apps/{{ app.name | replace('.yaml', '') | urlencode }}">
-                      {{ app.name }}
+                  <p class="p-3">
+                    <a href="{{appUrl}}">
+                      <img
+                        src="/apps/{{slug}}/main.png"
+                        class="img-fluid"
+                        alt="Screenshot of CLI app {{app.name}}"
+                      />
                     </a>
                   </p>
                   <div class="card-body">
-                    <p class="card-text">{{ app.description }}</p>
+                    <h5 class="card-title">{{app.name}}</h5>
+                    <p class="card-text">{{app.description}}</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">
+                        <a
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                          href="{{appUrl}}"
+                        >
                           View
-                        </button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary">
-                          Edit
-                        </button>
+                        </a>
                       </div>
-                      <small class="text-muted">9 mins</small>
+                      <small class="text-muted">{{app.price}}</small>
                     </div>
                   </div>
                 </div>
@@ -145,11 +121,8 @@
 
     <footer class="text-muted">
       <div class="container">
-        <p class="float-right">
-          <a href="#">Back to top</a>
-        </p>
-        <p>&copy; Feram GmbH</p>
-        <p>Made in Deutschland, Potsdam</a>.
+        <p>&copy; <a href="https://feram.io/imprint">Feram GmbH</a> -
+          Made in Deutschland, Potsdam
         </p>
       </div>
     </footer>
