@@ -5,7 +5,7 @@ url: https://github.com/jarun/nnn
 code: https://github.com/jarun/nnn
 license: https://github.com/jarun/nnn/blob/master/LICENSE
 price: Free
-command: 'nnn ~/Documents'
+command: 'nnn ~/Documents     '
 similar:
   - ranger
 installation:

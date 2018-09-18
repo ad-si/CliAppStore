@@ -1,6 +1,12 @@
 name: Youtube Dl
 slug: youtube-dl
-description:
-license:
+description: Download videos from YouTube and other video sites
+url: http://rg3.github.io/youtube-dl/
+code: https://github.com/rg3/youtube-dl/
+license: Unlicense
 price: Free
-command: 'youtube-dl https://youtu.be/oHg5SJYRHA0'
+command: 'youtube-dl youtu.be/oHg5SJYRHA0'
+installation:
+  homebrew: brew install youtube-dl
+  macports: sudo port install youtube-dl
+  pip: pip install youtube-dl

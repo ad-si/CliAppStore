@@ -1,0 +1,10 @@
+name: Transity
+slug: transity
+description: Intuitive plain text accounting tool
+url: https://github.com/feramhq/transity
+code: https://github.com/feramhq/transity
+license: ISC
+price: 4
+command: 'transity balance journal.yaml'
+installation:
+  npm: npm install --global transity

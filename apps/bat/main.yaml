@@ -5,7 +5,7 @@ url: https://github.com/sharkdp/bat
 code: https://github.com/sharkdp/bat
 license: MIT
 price: Free
-command: 'bat readme.md'
+command: 'bat readme.md          '
 installation:
   macos: brew install bat
   ubuntu: |

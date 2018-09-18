@@ -1,6 +1,10 @@
 name: Z
 slug: z
-description:
-license:
+description: Jump to your most used directories
+url: https://github.com/rupa/z/
+code: https://github.com/rupa/z/
+license: UNLICENSED
 price: Free
-command: 'z Deskt       '
+command: 'z Deskt            '
+installation:
+  guide: https://github.com/rupa/z/
