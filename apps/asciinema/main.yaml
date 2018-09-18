@@ -1,5 +1,10 @@
 name: Asciinema
 slug: asciinema
-description:
-license:
+description: Record and share your terminal sessions
+url: https://asciinema.org
+code: https://github.com/asciinema/asciinema
+license: GPL3
 price: Free
+command: 'asciinema rec demo.cast'
+installation:
+  default: sudo pip3 install asciinema

@@ -1,5 +1,11 @@
 name: Hub
 slug: hub
-description:
-license:
+description: Command-line wrapper for git that makes you better at GitHub
+url: https://hub.github.com/
+code: https://github.com/github/hub
+license: MIT
 price: Free
+command: 'hub clone github/hub'
+installation:
+  homebrew: brew install hub
+  windows: scoop install hub

@@ -5,5 +5,10 @@ description: |
   intermittent connectivity,
   intelligent local echo, and line editing
 url: https://mosh.org
-license:
+code: https://github.com/mobile-shell/mosh
+license: '?'
 price: Free
+command: 'mosh john@example.com -- ls -la'
+installation:
+   homebrew: brew install mosh
+   apt: sudo apt install mosh

@@ -1,5 +1,10 @@
 name: Npm
 slug: npm
-description:
-license:
+description: A package manager for JavaScript
+url: https://github.com/npm/cli
+code: https://github.com/npm/cli
+license: https://github.com/npm/cli/blob/latest/LICENSE
 price: Free
+command: 'npm install lodash'
+installation:
+  homebrew: brew install node

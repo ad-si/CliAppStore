@@ -1,5 +1,13 @@
 name: Jq
 slug: jq
-description:
-license:
+description: Command line JSON processor
+url: https://stedolan.github.io/jq/
+code: https://github.com/stedolan/jq
+license: MIT
 price: Free
+command: 'jq .name package.json'
+installation:
+  guide: https://stedolan.github.io/jq/download
+  homebrew: brew install jq
+  apt: sudo apt install jq
+  chocolatey: chocolatey install jq

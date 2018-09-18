@@ -3,3 +3,4 @@ slug: youtube-dl
 description:
 license:
 price: Free
+command: 'youtube-dl https://youtu.be/oHg5SJYRHA0'

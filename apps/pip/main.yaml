@@ -1,5 +1,10 @@
 name: Pip
 slug: pip
-description:
-license:
+description: The PyPA recommended tool for installing Python packages
+url: https://pip.pypa.io/
+code: https://github.com/pypa/pip
+license: MIT
 price: Free
+command: 'pip install scikit-learn'
+installation:
+  guide: https://docs.python-guide.org/starting/installation/

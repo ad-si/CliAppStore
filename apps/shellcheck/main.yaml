@@ -1,5 +1,12 @@
 name: Shellcheck
 slug: shellcheck
-description:
-license:
+description: A static analysis tool for shell scripts
+url: https://www.shellcheck.net
+license: GPL3
 price: Free
+command: 'shellcheck script.sh'
+installation:
+  default: stack install ShellCheck
+  macOS: brew install shellcheck
+  debian: apt install shellcheck
+  windows: scoop install shellcheck

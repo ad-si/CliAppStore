@@ -1,5 +1,10 @@
 name: Ag
 slug: ag
-description:
+description: A tool for searching code
+url: https://geoff.greer.fm/ag/
 license:
 price: Free
+command: "ag '^bi(ke|cycle)$' ~/things"
+installation:
+  macos: brew install the_silver_searcher
+  ubuntu: apt install silversearcher-ag

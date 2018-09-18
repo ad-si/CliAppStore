@@ -2,5 +2,10 @@ name: Exa
 slug: exa
 description: A modern replacement for ls
 url: https://the.exa.website
+code: https://github.com/ogham/exa
 license: MIT
 price: Free
+command: 'exa --long --header --git'
+installation:
+  default: cargo install exa
+  macos: brew install exa

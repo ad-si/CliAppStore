@@ -1,5 +1,10 @@
 name: Fzf
 slug: fzf
-description:
-license:
+description: A command-line fuzzy finder
+url: https://github.com/junegunn/fzf
+license: MIT
 price: Free
+command: 'find * -type f | fzf > selected'
+installation:
+  macos: brew install fzf
+  linuxbrew: brew install fzf

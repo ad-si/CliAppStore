@@ -30,5 +30,5 @@ and use the [Live Reload] Firefox plugin to auto reload the website.
 ## How to Add a New App
 
 - Create a new directory in `/apps`
-- Add files `/apps/<name>/main.yaml` and `/apps/<name>/main.png`
-  (Preferably a 40 x 8 characters wide window in font size 18)
+- Add files `/apps/<name>/main.yaml`
+- Add main image `/apps/<name>/main.png` (checkout [./makefile])

@@ -1,5 +1,10 @@
 name: Fasd
 slug: fasd
-description:
-license:
+description: Quick access to files and directories
+url: https://github.com/clvv/fasd
+code: https://github.com/clvv/fasd
+license: MIT
 price: Free
+installation:
+  guide: https://github.com/clvv/fasd#install
+command: 'j Deskt         '

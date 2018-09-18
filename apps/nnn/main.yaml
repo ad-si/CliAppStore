@@ -1,5 +1,25 @@
 name: Nnn
 slug: nnn
-description:
-license:
+description: A fast terminal file manager
+url: https://github.com/jarun/nnn
+code: https://github.com/jarun/nnn
+license: https://github.com/jarun/nnn/blob/master/LICENSE
 price: Free
+command: 'nnn ~/Documents'
+similar:
+  - ranger
+installation:
+  auR: yaourt -S nnn
+  debian: apt-get install nnn
+  fedora: dnf install nnn
+  freeBSD: pkg install nnn
+  gentoo: emerge nnn
+  homebrew: brew install nnn
+  nixOS: nix-env -i nnn
+  openBSD: pkg_add nnn
+  openSUSE: zypper in nnn
+  slackware: slackpkg install nnn
+  source-mage: (cast nnn)
+  ubuntu: apt-get install nnn
+  ubuntu: PPA (apt-get install nnn)
+  void-linux: (xbps-install -S nnn)

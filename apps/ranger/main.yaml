@@ -1,6 +1,6 @@
 name: Ranger
 slug: ranger
-description: File manager with VI key bindings
+description: File manager with Vi key bindings
 url: http://ranger.github.io
 license: GPL3
 price: Free

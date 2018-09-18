@@ -1,5 +1,10 @@
 name: Gifsicle
 slug: gifsicle
-description:
-license:
+description: Create, manipulate, and optimize GIF images and animations
+url: http://www.lcdf.org/gifsicle/
+license: GPL2
 price: Free
+command: 'gifsicle --delay=10 --loop *.gif > anim.gif'
+installation:
+  homebrew: brew install gifsicle
+  apt: apt install gifsicle

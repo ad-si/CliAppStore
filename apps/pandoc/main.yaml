@@ -4,3 +4,6 @@ description: A universal document converter
 license: GPL3
 website: https://pandoc.org/
 price: Free
+command: 'pandoc readme.md --output readme.pdf'
+installation:
+  homebrew: brew install pandoc

@@ -1,5 +1,8 @@
 name: SVGO
 slug: svgo
-description:
-license:
+description: Tool for optimizing SVG files
+url: https://github.com/svg/svgo
+license: MIT
 price: Free
+command: 'svgo icon.svg icon.min.svg'
+installation: npm install --global svgo

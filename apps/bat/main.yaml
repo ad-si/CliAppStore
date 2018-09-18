@@ -1,5 +1,14 @@
 name: Bat
 slug: bat
-description:
-license:
+description: A cat clone with syntax highlighting and Git integration
+url: https://github.com/sharkdp/bat
+code: https://github.com/sharkdp/bat
+license: MIT
 price: Free
+command: 'bat readme.md'
+installation:
+  macos: brew install bat
+  ubuntu: |
+    curl -O https://github.com/sharkdp/bat/releases/download/v0.7.0/bat_0.7.0_amd64.deb;
+    sudo dpkg -i bat_0.7.0_amd64.deb
+  windows: scoop install bat

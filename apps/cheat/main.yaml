@@ -1,6 +1,8 @@
 name: Cheat
 slug: cheat
-description:
-url: cheat.sh
-license:
+description: Interactive cheatsheets on the command line
+url: https://github.com/chrisallenlane/cheat
+license: MIT
 price: Free
+command: 'cheat tar       '
+installation: pip install cheat

@@ -5,3 +5,6 @@ description: |
 url: http://postgrest.org
 license: MIT
 price: Free
+command: 'postgrest production.conf'
+installation:
+  homebrew: brew install postgrest
