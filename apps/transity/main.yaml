@@ -1,6 +1,15 @@
 name: Transity
 slug: transity
 description: Intuitive plain text accounting tool
+description_long: |
+  We found existing plain text accounting tools unsatisfactory,
+  so we developed Transity.
+  It models financial flows in terms of transactions
+  and not debited / credited accounts.
+  Furthermore, its journal format is based on YAML
+  and can therefore easily be processed by 3rd party tools.
+  Also, it's written in PureScript.
+
 url: https://github.com/feramhq/transity
 code: https://github.com/feramhq/transity
 license: ISC

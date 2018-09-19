@@ -18,11 +18,6 @@ rules:
     data:
       file: 'file://./images/{{path}}'
 
-  - pattern: '/apps/{{name:*}}/main.png'
-    static: true
-    data:
-      - file: 'file://./apps/{{name}}/main.png'
-
   - pattern: '/apps/{{name:*}}'
     data:
       app: 'file://apps/{{name}}/main.yaml'
@@ -32,3 +27,8 @@ rules:
       #   uri: 'https://api.github.com/repos/feramhq/cli-apps/contents/apps/{{name}}'
       #   force-mime-type: 'text/x-yaml'
     template: 'app.html'
+
+  - pattern: '/apps/{{appName:*}}/{{fileName:**}}'
+    static: true
+    data:
+      - file: 'file://./apps/{{appName}}/{{fileName}}'
