@@ -3,14 +3,22 @@
   <div class="container mt-4">
     <div class="jumbotron">
       <div class="row">
-        <div class="col-sm text-center">
+        <div class="col-sm-5 text-center">
           <img
-            class="img-fluid mb-4"
+            class="img-fluid"
             src="/apps/{{app.slug}}/main.png"
             alt="Screenshot of CLI app {{app.name}}"
           >
+        </div>
 
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+        <div class="col-sm">
+          <h1>{{app.name}}</h1>
+
+          <p class="text-secondary">{{app.description}}</p>
+
+          <p><small>{{app.developer}}</small></p>
+
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="float-right">
             <input type="hidden" name="business" value="adrian@feram.io">
             <input type="hidden" name="cmd" value="_xclick">
             <input type="hidden" name="item_name" value="{{app.name}}">
@@ -26,7 +34,7 @@
 
             <button
               type="submit"
-              class="btn font-weight-bold mx-auto"
+              class="btn font-weight-bold mx-auto mb-4"
               style="background-color: #ffc439"
             >
               <span
@@ -62,97 +70,196 @@
               <a href="" class="text-secondary">Get it for free</a>
             </small>
           </div>
-        </div>
-
-        <div class="col-sm">
-          <h1>{{app.name}}</h1>
-
-          <p class="text-secondary">{{app.description}}</p>
-
-          <p><small>{{app.description_long}}</small></p>
-
-          <p>{{app.license}}</p>
 
         </div>
       </div>
 
-      <hr>
+    </div>
 
-      <div class="row">
-        <div class="col">
-          <h4>Screenshots</h4>
 
-          <div class="container bg-secondary px-2 pt-2 rounded">
-            <div
-              id="screenshotsCarousel"
-              class="carousel slide mb-2"
-              data-ride="false"
-            >
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img
-                    class="d-block mx-auto"
-                    style="height: 20em"
-                    src="/apps/transity/screenshot-balance.svg"
-                    alt="First slide">
-                </div>
-                <div class="carousel-item">
-                  <img
-                    class="d-block mx-auto"
-                    style="height: 20em"
-                    src="/apps/transity/screenshot-plot.png"
-                    alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                  <img
-                    class="d-block mx-auto"
-                    style="height: 20em"
-                    src="/apps/transity/screenshot-transfers.svg"
-                    alt="Third slide">
-                </div>
-              </div>
+    <div class="row mb-5">
+      <div class="col">
+        <h4>Screenshots</h4>
 
-              <a class="carousel-control-prev" href="#screenshotsCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-
-              <a class="carousel-control-next" href="#screenshotsCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-            </div>
-
-            <hr>
-
-            <ol class="nav justify-content-around
-                  d-flex flex-row flex-wrap align-content-center"
-            >
-              <li class="nav-item active" data-target="#screenshotsCarousel" data-slide-to="0" >
+        <div class="container bg-secondary px-2 pt-2 rounded">
+          <div
+            id="screenshotsCarousel"
+            class="carousel slide mb-2"
+            data-ride="false"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active">
                 <img
-                  class="mb-2"
-                  style="height: 5em"
+                  class="d-block mx-auto"
+                  style="height: 20em"
                   src="/apps/transity/screenshot-balance.svg"
                   alt="First slide">
-              </li>
-              <li class="nav-item" data-target="#screenshotsCarousel" data-slide-to="1">
+              </div>
+              <div class="carousel-item">
                 <img
-                  class="mb-2"
-                  style="height: 5em"
+                  class="d-block mx-auto"
+                  style="height: 20em"
                   src="/apps/transity/screenshot-plot.png"
                   alt="Second slide">
-              </li>
-              <li class="nav-item" data-target="#screenshotsCarousel" data-slide-to="2">
+              </div>
+              <div class="carousel-item">
                 <img
-                  class="mb-2"
-                  style="height: 5em"
+                  class="d-block mx-auto"
+                  style="height: 20em"
                   src="/apps/transity/screenshot-transfers.svg"
                   alt="Third slide">
-              </li>
-            </ol>
+              </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#screenshotsCarousel" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+
+            <a class="carousel-control-next" href="#screenshotsCarousel" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
           </div>
+
+          <hr>
+
+          <ol class="nav justify-content-around
+                d-flex flex-row flex-wrap align-content-center"
+          >
+            <li class="nav-item active" data-target="#screenshotsCarousel" data-slide-to="0" >
+              <img
+                class="mb-2"
+                style="height: 5em"
+                src="/apps/transity/screenshot-balance.svg"
+                alt="First slide">
+            </li>
+            <li class="nav-item" data-target="#screenshotsCarousel" data-slide-to="1">
+              <img
+                class="mb-2"
+                style="height: 5em"
+                src="/apps/transity/screenshot-plot.png"
+                alt="Second slide">
+            </li>
+            <li class="nav-item" data-target="#screenshotsCarousel" data-slide-to="2">
+              <img
+                class="mb-2"
+                style="height: 5em"
+                src="/apps/transity/screenshot-transfers.svg"
+                alt="Third slide">
+            </li>
+          </ol>
         </div>
       </div>
     </div>
+
+    <div class="row mb-5">
+      <div class="col">
+        <h4>Description</h4>
+
+        <p>{{app.description_long}}</p>
+      </div>
+
+      <div class="col">
+        <h4>Changelog</h4>
+
+        <ol class="list-unstyled">
+          {% for release in app.changelog %}
+            <li
+              class="mb-3 pb-3 border-bottom
+                {% if loop.index != 1 %}
+                  collapse is-collapsible
+                {% endif %}"
+            >
+              <h5>{{app.name}} <small>{{release.version}}</small></h5>
+              <p>
+                <small class="text-secondary">
+                  Released on {{release.utc}}
+                </small>
+              </p>
+              <ul
+                class="text-secondary"
+                style="list-style-type: disc"
+              >
+                {% for change in release.changes %}
+                  <li>{{change}}</li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% endfor %}
+          <li>
+            <a class="d-block" data-toggle="collapse" href=".is-collapsible,#show-more,#show-less">
+              <div id="show-less" class="collapse">Less</div>
+              <div id="show-more" class="collapse show">More</div>
+            </a>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h4>Information</h4>
+
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th scope="row">Category</th>
+              <td>{{app.category}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Version</th>
+              <td>{{app.version}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Price</th>
+              <td>{{app.developer}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Compatibility</th>
+              <td>{{app.compatibility}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Website</th>
+              <td>{{app.url}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Developer Website</th>
+              <td>{{app.url}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Sourcecode</th>
+              <td>{{app.code}}</td>
+            </tr>
+            <tr>
+              <th scope="row">License</th>
+              <td>{{app.license}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col">
+        <h4>Similar Apps</h4>
+
+        <ul class="list-unstyled">
+          {% for similarApp in app.similar %}
+            <li class="media">
+              <img
+                class="mr-3"
+                src="{{similarApp.image}}"
+                alt="Image of app"
+                style="max-width: 8em"
+              >
+              <div class="media-body">
+                <h5 class="mt-0 mb-1">{{similarApp.name}}</h5>
+                <p>{{similarApp.description}}</p>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
   </div>
 {% endblock %}

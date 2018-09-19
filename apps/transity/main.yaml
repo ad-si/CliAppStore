@@ -17,3 +17,123 @@ price: 4
 command: 'transity balance journal.yaml'
 installation:
   npm: npm install --global transity
+developer: Feram GmbH
+
+similar:
+  - name: TodoApp
+    description: Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+    image: /apps/transity/main.png
+
+  - name: Coolomat
+    description: Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+    image: /apps/transity/main.png
+
+  - name: WhatThe
+    description: Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+    image: /apps/transity/main.png
+
+changelog:
+  - version: 0.3.0
+    utc: 2018-09-10
+    changes:
+      - Add command "transfers"
+      - Upgrade to PureScript 0.12, use psc-package instead of bower
+      - Move the ledger to transity script into its own file
+      - Quote utc fields
+      - Don't use make in npm scripts
+      - Fix PR comments
+      - Added export command
+      - Added support for hledger export
+      - Fix typos and clarify sentences
+      - Add sub commands for printing as csv & tsv
+      - Add description on how to build it
+
+  - version: 0.2.1
+    utc: 2018-06-05
+    changes:
+      - Fix test command for CI, fix typos
+      - Fix references, add screenshot of plot
+
+  - version: 0.2.0
+    utc: 2018-06-05
+    changes:
+      - Fix license file
+      - Call data file journal and not ledger
+      - Remove obsolete JavaScript code
+      - Merge guide into readme
+      - Fix build status link
+      - Don't coerce invalid dates to 1970-01-01
+      - Add gplot subcommands to allow piping to gnuplot
+      - Add guide to plot account balance, improve sample ledger for plotting
+      - Add CLI command to list all entries
+      - Replace colorization boolean with a proper ColorFlag datatype
+      - Exit with status code 1 if parsing or validation fails
+      - Add missing dependency "purescript-sets"
+      - Verify accounts after parsing ledger file
+      - Add makefile
+      - Remove obsolete imports
+      - Improve structure of Main.purs file
+      - Create LICENSE
+      - Replace CSS with SVG attributes
+      - Try to fix screenshot SVG
+      - Replace PNG screenshot with an SVG version
+      - Add color support for terminal printing
+      - Add missing `pulp build` to postinstall
+      - Update and extend readme and docstring
+      - Add development documentation
+      - Implement alignment of entries, split Account and CommodityMap modules
+      - Simplify `case of` expression in main file
+
+  - version: 0.1.0-alpha
+    utc: 2018-01-18
+    changes:
+      - Add field "repository" to package file
+      - Add dedicated CLI file, remove yarn.lock file
+      - Fix line breaks in while loop in travis script
+      - Fix bug in while loop in travis script
+      - Add missing dependency "js-yaml", fix link in readme
+      - Add Travis build status button, list more commodity features
+      - Add travis config file and package lock file
+      - Indent entries in balance only as deep as necessary
+      - Replace data type Either with Result
+      - Disallow accounts with empty ids, improve error messages
+      - Add showPretty function for accounts, reduce precision to 2 digits
+      - Document installation in readme, update example ledger file
+      - Extend features / roadmap list
+      - Sort entities & accounts ascending in balance output, reduce precision
+      - Display vertical separator lines only if datetime is defined
+      - Print id only if id is not empty
+      - Display horizontal line under ledger meta infos
+      - Display better error messages for invalid YAML
+      - Subdivide transactions into transfers, rename functions, add optional fields
+      - Start writing a guide
+      - Start implementing transfers
+      - Extend list of features, improve import script
+      - Merge TODO and Features lists, add "Related" section
+      - Extend explanation, move backend description to own file
+      - Use Rationals instead of Numbers for amount quantity
+      - Add and integrate data type "Account"
+      - Make Commodity a newtype
+      - Add support to print balance from command line
+      - Add support for showing the balance
+      - Add tests for pretty showing of data types
+      - Use PureScript Spec for testing
+      - Modularize code
+      - Add support for pretty printing of transactions
+      - Add FAQ section to readme
+      - Add first draft of rewrite in PureScript
+      - Remove draft of rewrite in haskell
+      - Read & print transactions from yaml file
+      - Add files for rewrite in haskell
+      - Add import section to readme.md
+      - Pretty print error for negative quantity
+      - Really filter out all empty accounts & invalid transfers
+      - Improve layout, colorize output, support arbitrary precision accounts
+      - Transfers get printed, not transactions
+      - Add cli, add subcommands "balance" & "transactions"
+      - Add missing fields in package.json
+      - Add more dependencies, use yarn instead of npm
+      - Fix processing of single transfer transactions
+      - Normalize single transfers, pretty print balance
+      - First implementation
+      - Initial commit
