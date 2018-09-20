@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block main %}
   <div class="container mt-4">
-    <div class="jumbotron">
+    <div class="jumbotron py-4">
       <div class="row">
         <div class="col-sm-5 text-center">
           <img
@@ -68,6 +68,9 @@
             >
           </form>
 
+          {% set license_terms = raw(app.license_terms
+              | replace("\n\n", "</p><p>")) %}
+
           <div class="text-secondary">
             <small>
               <a href="#pricingModal"
@@ -75,12 +78,14 @@
               >
                 Pricing info
               </a>
-              <span> • </span>
-              <a href="#trialModal"
-                data-toggle="modal" class="text-secondary"
-              >
-                Free trial version
-              </a>
+              {% if app.has_free_trail %}
+                <span> • </span>
+                <a href="#trialModal"
+                  data-toggle="modal" class="text-secondary"
+                >
+                  Free trial version
+                </a>
+              {% endif %}
             </small>
           </div>
 
@@ -118,16 +123,7 @@
                       </ul>
                     </li>
                   </ul>
-                  <p>
-                    A license lets you use {{app.name}}
-                    on as many computers as you like.
-                    Businesses require one license
-                    per person using {{app.name}}.
-                  </p>
-                  <p>
-                    Licenses include 1 year of regular updates plus
-                    additional support for critical updates afterwards.
-                  </p>
+                  {{license_terms}}
                 </div>
                 <div class="modal-footer">
                   <button type="button"
@@ -156,16 +152,7 @@
                     You can try out {{app.name}} for free.
                     To use it regularly, you must buy a license.
                   </strong></p>
-                  <p>
-                    A license lets you use {{app.name}}
-                    on as many computers as you like.
-                    Businesses require one license
-                    per person using {{app.name}}.
-                  </p>
-                  <p>
-                    Licenses include 1 year of regular updates plus
-                    additional support for critical updates afterwards.
-                  </p>
+                  <p>{{license_terms}}</p>
                 </p>
                 </div>
                 <div class="modal-footer">
@@ -267,6 +254,49 @@
       </div>
 
       <div class="col">
+        <h4>Information</h4>
+
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th scope="row">Category</th>
+              <td>{{app.category}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Version</th>
+              <td>{{app.changelog[0].version}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Price</th>
+              <td>{{app.price}} €</td>
+            </tr>
+            <tr>
+              <th scope="row">App Website</th>
+              <td><a href="{{app.website}}">{{app.website}}</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Sourcecode</th>
+              <td><a href="{{app.code}}">{{app.code}}</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Developer Website</th>
+              <td><a href="{{app.developer.website}}">
+                {{app.developer.website}}
+              </a></td>
+            </tr>
+            <tr>
+              <th scope="row">License</th>
+              <td><a href="{{app.license.url}}">
+                {{app.license.name}}
+              </a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
         <h4>Changelog</h4>
 
         <ol class="list-unstyled">
@@ -300,49 +330,6 @@
             </a>
           </li>
         </ol>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <h4>Information</h4>
-
-        <table class="table table-borderless">
-          <tbody>
-            <tr>
-              <th scope="row">Category</th>
-              <td>{{app.category}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Version</th>
-              <td>{{app.version}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Price</th>
-              <td>{{app.developer.name}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Compatibility</th>
-              <td>{{app.compatibility}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Website</th>
-              <td>{{app.url}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Developer Website</th>
-              <td>{{app.url}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Sourcecode</th>
-              <td>{{app.code}}</td>
-            </tr>
-            <tr>
-              <th scope="row">License</th>
-              <td>{{app.license}}</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
 
       <div class="col">

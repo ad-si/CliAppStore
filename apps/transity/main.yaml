@@ -9,30 +9,51 @@ description_long: |
   Furthermore, its journal format is based on YAML
   and can therefore easily be processed by 3rd party tools.
   Also, it's written in PureScript.
+category: Finance
 
 website: https://github.com/feramhq/transity
 code: https://github.com/feramhq/transity
-license: ISC
+license:
+  name: ISC
+  url: https://github.com/feramhq/transity/blob/master/LICENSE
 price: 4
 command: 'transity balance journal.yaml'
 installation_url: https://github.com/feramhq/transity#installation
-installation:
-  npm: npm install --global transity
+installations:
+  - tool: npm
+    command: npm install --global transity
+
+has_free_trail: true
+license_terms: |
+  A license lets you use Transity
+  on as many computers as you like.
+  Businesses require one license
+  per person using Transity.
+
+  Licenses include 1 year of regular updates plus
+  additional support for critical updates afterwards.
+
 developer:
   name: Feram GmbH
   website: https://feram.io
 
 similar:
   - name: TodoApp
-    description: Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+    description: |
+      Cras sit amet nibh libero, in gravida nulla.
+      Nulla vel metus scelerisque ante sollicitudin.
     image: /apps/transity/main.png
 
   - name: Coolomat
-    description: Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+    description: |
+      Cras sit amet nibh libero, in gravida nulla.
+      Nulla vel metus scelerisque ante sollicitudin.
     image: /apps/transity/main.png
 
   - name: WhatThe
-    description: Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+    description: |
+      Cras sit amet nibh libero, in gravida nulla.
+      Nulla vel metus scelerisque ante sollicitudin.
     image: /apps/transity/main.png
 
 changelog:
