@@ -16,9 +16,14 @@
 
           <p class="text-secondary">{{app.description}}</p>
 
-          <p><small>{{app.developer}}</small></p>
+          <p>By <a href="{{app.developer.website}}">{{app.developer.name}}</a>
+          </p>
 
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="float-right">
+          <form
+            method="post"
+            action="https://www.paypal.com/cgi-bin/webscr"
+            class="mb-2"
+          >
             <input type="hidden" name="business" value="adrian@feram.io">
             <input type="hidden" name="cmd" value="_xclick">
             <input type="hidden" name="item_name" value="{{app.name}}">
@@ -28,13 +33,9 @@
               value="https://pics.paypal.com/00/s/MjAwWDIwMFhQTkc/p/Y2Q4NGYzZWItZDI4Mi00NWQ3LTk4ZWUtNjgwMDdhMDJjMDk2/image_58.jpg">
             <input type="hidden" name="no_shipping" value="1">
 
-            <img alt="Tracking pixel" border="0" width="1" height="1"
-              src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"
-            >
-
             <button
               type="submit"
-              class="btn font-weight-bold mx-auto mb-4"
+              class="btn font-weight-bold"
               style="background-color: #ffc439"
             >
               <span
@@ -61,14 +62,119 @@
                 </svg>
               </span>
             </button>
+
+            <img alt="Tracking pixel" border="0" width="1" height="1"
+              src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"
+            >
           </form>
 
           <div class="text-secondary">
             <small>
-              <a href="" class="text-secondary">Pricing Infos</a>
+              <a href="#pricingModal"
+                data-toggle="modal" class="text-secondary"
+              >
+                Pricing info
+              </a>
               <span> • </span>
-              <a href="" class="text-secondary">Get it for free</a>
+              <a href="#trialModal"
+                data-toggle="modal" class="text-secondary"
+              >
+                Free trial version
+              </a>
             </small>
+          </div>
+
+          <div id="pricingModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Pricing Info</h5>
+                  <button type="button" class="close"
+                    data-dismiss="modal" aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>The payment is composed of following parts:</p>
+                  <ul>
+                    <li>19 % ({{app.price * 0.19}} €) is German VAT</li>
+                    <li>Of the remaining 81 % ({{app.price * 0.81}} €)
+                      <ul>
+                        <li>
+                          70 % ({{app.price * 0.81 * 0.7}} €)
+                          go to the developer of the app
+                          ({{app.developer.name}}).
+                          This amount is not transferred immediately,
+                          but aggregated until a threshold of 10 € is exceeded
+                          to reduce transaction costs.
+                        </li>
+                        <li>
+                          30 % ({{app.price * 0.81 * 0.3}} €)
+                          go to us (<a href="https://feram.io">Feram GmbH</a>)
+                          in order to power this website and ensure a
+                          sustainable development.
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <p>
+                    A license lets you use {{app.name}}
+                    on as many computers as you like.
+                    Businesses require one license
+                    per person using {{app.name}}.
+                  </p>
+                  <p>
+                    Licenses include 1 year of regular updates plus
+                    additional support for critical updates afterwards.
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button"
+                    class="btn btn-secondary" data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="trialModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Free Trial Version</h5>
+                  <button type="button" class="close"
+                    data-dismiss="modal" aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p><strong>
+                    You can try out {{app.name}} for free.
+                    To use it regularly, you must buy a license.
+                  </strong></p>
+                  <p>
+                    A license lets you use {{app.name}}
+                    on as many computers as you like.
+                    Businesses require one license
+                    per person using {{app.name}}.
+                  </p>
+                  <p>
+                    Licenses include 1 year of regular updates plus
+                    additional support for critical updates afterwards.
+                  </p>
+                </p>
+                </div>
+                <div class="modal-footer">
+                  <a href="{{app.installation_url}}" class="btn btn-primary">
+                    I understand, forward me to the download
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -213,7 +319,7 @@
             </tr>
             <tr>
               <th scope="row">Price</th>
-              <td>{{app.developer}}</td>
+              <td>{{app.developer.name}}</td>
             </tr>
             <tr>
               <th scope="row">Compatibility</th>

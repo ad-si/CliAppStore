@@ -10,14 +10,17 @@ description_long: |
   and can therefore easily be processed by 3rd party tools.
   Also, it's written in PureScript.
 
-url: https://github.com/feramhq/transity
+website: https://github.com/feramhq/transity
 code: https://github.com/feramhq/transity
 license: ISC
 price: 4
 command: 'transity balance journal.yaml'
+installation_url: https://github.com/feramhq/transity#installation
 installation:
   npm: npm install --global transity
-developer: Feram GmbH
+developer:
+  name: Feram GmbH
+  website: https://feram.io
 
 similar:
   - name: TodoApp
