@@ -1,12 +1,43 @@
-name:
-slug:
-description:
-url:
-code:
+name:  # Text
+slug:  # Text [a-z0-9_]
+description:  # Text
+description_long:  # Text
+category:  # Text
+website:  # URL
+code:  # URL
+
 license:
-price:
-command:
+  name:  # Text
+  url:  # URL to license file
+
+price:  # Float (without currency)
+command:  # Text (example CLI command)
+installation_url:  # URL
+
 installation:
-  ubuntu:
-  macos:
-  windows:
+  homebrew:  # Text (corresponding CLI command)
+  pacman:  # Text (corresponding CLI command)
+  apt:  # Text (corresponding CLI command)
+  dnf:  # Text (corresponding CLI command)
+  layman:  # Text (corresponding CLI command)
+  xbps:  # Text (corresponding CLI command)
+  nix:  # Text (corresponding CLI command)
+  # …
+
+has_free_trail:  # Boolean
+
+developer:
+  name:  # Text
+  website:  # URL
+
+similar:
+  - name:  # Text
+    description:  # Text
+    image:  # Absolute Path
+
+screenshots:  # [Text (filename)]
+
+changelog:
+  - version:  # Text
+    utc:  # YYYY-MM-DD in UTC
+    changes:  # [Text]
