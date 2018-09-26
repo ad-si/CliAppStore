@@ -1,3 +1,4 @@
+state: draft
 name: Fzf
 slug: fzf
 description: A command-line fuzzy finder

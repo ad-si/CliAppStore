@@ -1,3 +1,4 @@
+state: draft
 name: Shellcheck
 slug: shellcheck
 description: A static analysis tool for shell scripts

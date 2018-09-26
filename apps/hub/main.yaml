@@ -1,3 +1,4 @@
+state: draft
 name: Hub
 slug: hub
 description: Command-line wrapper for git that makes you better at GitHub

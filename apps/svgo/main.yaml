@@ -1,3 +1,4 @@
+state: draft
 name: SVGO
 slug: svgo
 description: Tool for optimizing SVG files

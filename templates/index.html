@@ -27,27 +27,31 @@
       <div class="row">
 
         {% for app in apps %}
-          {% set slug = app.slug | urlencode %}
-          {% set appUrl = '/apps/' ~ slug %}
+          {% if app.state != "draft" %}
+            {% set slug = app.slug | urlencode %}
+            {% set appUrl = '/apps/' ~ slug %}
 
-          <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-              <a href="{{appUrl}}">
-                <img
-                  class="card-img-top img-fluid"
-                  src="/apps/{{slug}}/main.png"
-                  alt="Screenshot of CLI app {{app.name}}"
-                />
-              </a>
-              <div class="card-body">
-                <small class="float-right text-muted">{{app.price}}</small>
-                <h5 class="card-title">
-                  <a href="{{appUrl}}" class="text-dark">{{app.name}}</a>
-                </h5>
-                <p class="card-text">{{app.description}}</p>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <a href="{{appUrl}}">
+                  <img
+                    class="card-img-top img-fluid"
+                    src="/apps/{{slug}}/main.png"
+                    alt="Screenshot of CLI app {{app.name}}"
+                  />
+                </a>
+                <div class="card-body">
+                  <small class="float-right text-muted">
+                    {{app.price}} €
+                  </small>
+                  <h5 class="card-title">
+                    <a href="{{appUrl}}" class="text-dark">{{app.name}}</a>
+                  </h5>
+                  <p class="card-text">{{app.description}}</p>
+                </div>
               </div>
             </div>
-          </div>
+          {% endif %}
         {% endfor %}
       </div>
     </div>
