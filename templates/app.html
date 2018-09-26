@@ -102,20 +102,26 @@
                 </div>
                 <div class="modal-body">
                   <p>The payment is composed of following parts:</p>
+                  {% set value_vat = round(app.price * 0.19 * 100) / 100 %}
+                  {% set value_net = app.price - value_vat %}
+                  {% set value_store = round(value_net * 0.3 * 100) / 100 %}
+                  {% set value_developer = value_net - value_store %}
                   <ul>
-                    <li>19 % ({{app.price * 0.19}} €) is German VAT</li>
-                    <li>Of the remaining 81 % ({{app.price * 0.81}} €)
+                    <li> 19 % ({{value_vat}} €) is German VAT</li>
+                    <li>Of the remaining 81 % ({{value_net}} €)
                       <ul>
                         <li>
-                          70 % ({{app.price * 0.81 * 0.7}} €)
+                          70 % ({{value_developer}} €)
                           go to the developer of the app
-                          ({{app.developer.name}}).
+                          <a href="{{app.developer.website}}">
+                            ({{app.developer.name}})
+                          </a>.
                           This amount is not transferred immediately,
                           but aggregated until a threshold of 10 € is exceeded
                           to reduce transaction costs.
                         </li>
                         <li>
-                          30 % ({{app.price * 0.81 * 0.3}} €)
+                          30 % ({{value_store}} €)
                           go to us (<a href="https://feram.io">Feram GmbH</a>)
                           in order to power this website and ensure a
                           sustainable development.
@@ -181,38 +187,43 @@
             data-ride="false"
           >
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img
-                  class="d-block mx-auto"
-                  style="height: 20em"
-                  src="/apps/transity/screenshot-balance.svg"
-                  alt="First slide">
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="d-block mx-auto"
-                  style="height: 20em"
-                  src="/apps/transity/screenshot-plot.png"
-                  alt="Second slide">
-              </div>
-              <div class="carousel-item">
-                <img
-                  class="d-block mx-auto"
-                  style="height: 20em"
-                  src="/apps/transity/screenshot-transfers.svg"
-                  alt="Third slide">
-              </div>
+              {% for screenshot in app.screenshots %}
+                <div class="carousel-item
+                  {% if loop.index == 1 %}active{% endif %}"
+                >
+                  <img
+                    class="d-block mx-auto"
+                    style="height: 20em"
+                    src="/apps/{{app.slug}}/{{screenshot}}"
+                    alt="Screenshot">
+                </div>
+              {% endfor %}
             </div>
 
-            <a class="carousel-control-prev" href="#screenshotsCarousel" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
+            {% if app.screenshots.length > 0 %}
+              <a
+                class="carousel-control-prev"
+                href="#screenshotsCarousel"
+                role="button"
+                data-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true">
+                </span>
+                <span class="sr-only">Previous</span>
+              </a>
 
-            <a class="carousel-control-next" href="#screenshotsCarousel" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
+              <a
+                class="carousel-control-next"
+                href="#screenshotsCarousel"
+                role="button"
+                data-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true">
+                </span>
+                <span class="sr-only">Next</span>
+              </a>
+            {% endif %}
+
           </div>
 
           <hr>
@@ -220,27 +231,20 @@
           <ol class="nav justify-content-around
                 d-flex flex-row flex-wrap align-content-center"
           >
-            <li class="nav-item active" data-target="#screenshotsCarousel" data-slide-to="0" >
-              <img
-                class="mb-2"
-                style="height: 5em"
-                src="/apps/transity/screenshot-balance.svg"
-                alt="First slide">
-            </li>
-            <li class="nav-item" data-target="#screenshotsCarousel" data-slide-to="1">
-              <img
-                class="mb-2"
-                style="height: 5em"
-                src="/apps/transity/screenshot-plot.png"
-                alt="Second slide">
-            </li>
-            <li class="nav-item" data-target="#screenshotsCarousel" data-slide-to="2">
-              <img
-                class="mb-2"
-                style="height: 5em"
-                src="/apps/transity/screenshot-transfers.svg"
-                alt="Third slide">
-            </li>
+            {% for screenshot in app.screenshots %}
+              <li
+                class="nav-item active"
+                data-target="#screenshotsCarousel"
+                data-slide-to="0"
+              >
+                <img
+                  class="mb-2"
+                  style="height: 5em"
+                  src="/apps/{{app.slug}}/{{screenshot}}"
+                  alt="Screenshot"
+                >
+              </li>
+            {% endfor %}
           </ol>
         </div>
       </div>
@@ -248,13 +252,13 @@
 
     <div class="row mb-5">
       <div class="col">
-        <h4>Description</h4>
+        <h4 class="mb-3">Description</h4>
 
-        <p>{{app.description_long}}</p>
+        <p>{{raw(app.description_long | replace("\n\n", "</p><p>"))}}</p>
       </div>
 
       <div class="col">
-        <h4>Information</h4>
+        <h4 class="mb-3">Information</h4>
 
         <table class="table table-borderless">
           <tbody>
@@ -297,7 +301,7 @@
 
     <div class="row">
       <div class="col">
-        <h4>Changelog</h4>
+        <h4 class="mb-3">Changelog</h4>
 
         <ol class="list-unstyled">
           {% for release in app.changelog %}
@@ -309,8 +313,10 @@
             >
               <h5>{{app.name}} <small>{{release.version}}</small></h5>
               <p>
-                <small class="text-secondary">
-                  Released on {{release.utc}}
+                <small>
+                  <a href="{{release.url}}">
+                    Released on {{release.utc}}
+                  </a>
                 </small>
               </p>
               <ul
@@ -333,21 +339,26 @@
       </div>
 
       <div class="col">
-        <h4>Similar Apps</h4>
+        <h4 class="mb-3">Similar Apps</h4>
 
         <ul class="list-unstyled">
           {% for similarApp in app.similar %}
             <li class="media">
-              <img
-                class="mr-3"
-                src="{{similarApp.image}}"
-                alt="Image of app"
-                style="max-width: 8em"
-              >
+              <a href="/apps/{{similarApp.slug}}">
+                <img
+                  class="mr-3"
+                  src="{{similarApp.image}}"
+                  alt="Image of app"
+                  style="max-width: 8em"
+                >
+              </a>
               <div class="media-body">
-                <h5 class="mt-0 mb-1">{{similarApp.name}}</h5>
+                <a class="text-dark" href="/apps/{{similarApp.slug}}">
+                  <h5 class="mt-0 mb-1">{{similarApp.name}}</h5>
+                </a>
                 <p>{{similarApp.description}}</p>
               </div>
+              </a>
             </li>
           {% endfor %}
         </ul>

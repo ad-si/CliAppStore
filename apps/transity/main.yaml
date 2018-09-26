@@ -6,9 +6,11 @@ description_long: |
   so we developed Transity.
   It models financial flows in terms of transactions
   and not debited / credited accounts.
+
   Furthermore, its journal format is based on YAML
   and can therefore easily be processed by 3rd party tools.
   Also, it's written in PureScript.
+
 category: Finance
 
 website: https://github.com/feramhq/transity
@@ -16,7 +18,7 @@ code: https://github.com/feramhq/transity
 license:
   name: ISC
   url: https://github.com/feramhq/transity/blob/master/LICENSE
-price: 4
+price: 2.99
 command: 'transity balance journal.yaml'
 installation_url: https://github.com/feramhq/transity#installation
 installations:
@@ -38,26 +40,17 @@ developer:
   website: https://feram.io
 
 similar:
-  - name: TodoApp
-    description: |
-      Cras sit amet nibh libero, in gravida nulla.
-      Nulla vel metus scelerisque ante sollicitudin.
-    image: /apps/transity/main.png
+  - name: Hledger
+    description: Lightweight, portable, and dependable accounting tools
+    image: /apps/hledger/main.png
 
-  - name: Coolomat
-    description: |
-      Cras sit amet nibh libero, in gravida nulla.
-      Nulla vel metus scelerisque ante sollicitudin.
-    image: /apps/transity/main.png
-
-  - name: WhatThe
-    description: |
-      Cras sit amet nibh libero, in gravida nulla.
-      Nulla vel metus scelerisque ante sollicitudin.
-    image: /apps/transity/main.png
+screenshots:
+  - screenshot-balance.svg
+  - screenshot-transfers.svg
+  - screenshot-plot.png
 
 changelog:
-  - version: 0.3.0
+  - version: "0.3.0"
     utc: 2018-09-10
     changes:
       - Add command "transfers"
@@ -72,13 +65,13 @@ changelog:
       - Add sub commands for printing as csv & tsv
       - Add description on how to build it
 
-  - version: 0.2.1
+  - version: "0.2.1"
     utc: 2018-06-05
     changes:
       - Fix test command for CI, fix typos
       - Fix references, add screenshot of plot
 
-  - version: 0.2.0
+  - version: "0.2.0"
     utc: 2018-06-05
     changes:
       - Fix license file
@@ -108,7 +101,7 @@ changelog:
       - Implement alignment of entries, split Account and CommodityMap modules
       - Simplify `case of` expression in main file
 
-  - version: 0.1.0-alpha
+  - version: "0.1.0-alpha"
     utc: 2018-01-18
     changes:
       - Add field "repository" to package file
