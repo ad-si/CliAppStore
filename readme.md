@@ -26,13 +26,6 @@ and use the [Live Reload] Firefox plugin to auto reload the website.
 Hosted on: [feram.usesfathom.com](https://feram.usesfathom.com)
 
 
-## How to Add a New App
-
-- Create a new directory in `/apps`
-- Add files `/apps/<name>/main.yaml`
-- Add main image `/apps/<name>/main.png` (checkout [./makefile])
-
-
 ## TODO
 
 - Check out https://graphcms.com

@@ -1,9 +1,0 @@
-state: draft
-name: TLDR
-slug: tldr
-description: Simplified and community-driven man pages
-url: https://tldr.sh
-license: MIT
-price: Free
-command: 'tldr tar          '
-installation: npm install --global tldr

@@ -1,8 +1,0 @@
-state: draft
-name: Trash
-slug: trash
-description: Move files and folders to the trash
-license: MIT
-price: Free
-command: 'trash obsolete-images'
-installation: 'npm install --global trash-cli'
