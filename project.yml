@@ -21,12 +21,12 @@ rules:
   - pattern: '/apps/{{name:*}}'
     data:
       app: 'file://apps/{{name}}/main.yaml'
-      # app:
-      #   type: 'https'
-      #   uri: 'https://raw.githubusercontent.com/feramhq/cli-apps/master/apps/{{name}}'
-      #   uri: 'https://api.github.com/repos/feramhq/cli-apps/contents/apps/{{name}}'
-      #   force-mime-type: 'text/x-yaml'
     template: 'app.html'
+
+  - pattern: '/apps/{{name:*}}/installation'
+    data:
+      app: 'file://apps/{{name}}/main.yaml'
+    template: 'installation.html'
 
   - pattern: '/apps/{{appName:*}}/{{fileName:**}}'
     static: true

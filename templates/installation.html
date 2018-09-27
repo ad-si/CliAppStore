@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block main %}
+  <div class="container mt-4">
+    <div class="jumbotron py-4">
+      <div class="row">
+        <div class="col-sm-5 text-center">
+          <img
+            class="img-fluid"
+            src="/apps/{{app.slug}}/main.png"
+            alt="Screenshot of CLI app {{app.name}}"
+          >
+        </div>
+
+        <div class="col-sm">
+          <h1>{{app.name}} Installation</h1>
+
+          <p class="text-secondary">{{app.description}}</p>
+
+          <p>By <a href="{{app.developer.website}}">{{app.developer.name}}</a>
+          </p>
+
+          <p>Extended installation instructions are available
+            <a href="{{app.installation_url}}">here</a>.
+          </p>
+
+          <a href="/apps/{{app.slug}}" class="btn btn-primary float-right">
+            Go Back to App
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <ul class="list-unstyled">
+      {% for installation in app.installations %}
+        <li class="media mb-3">
+          <img
+            class="img-fluid mr-3"
+            width="64px"
+            height="64px"
+            src="/images/{{installation.tool}}.svg"
+            alt="Icon of {{installation.tool}}"
+          >
+          <div class="media-body">
+            <h5 class="mt-0">{{installation.tool}}</h5>
+            <p><code>{{installation.command}}</code></p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+{% endblock %}

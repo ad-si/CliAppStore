@@ -313,10 +313,10 @@
             >
               <h5>{{app.name}} <small>{{release.version}}</small></h5>
               <p>
-                <small>
-                  <a href="{{release.url}}">
+                <small class="text-secondary">
+                  {% if release.url %}<a href="{{release.url}}">{% endif %}
                     Released on {{release.utc}}
-                  </a>
+                  {% if release.url %}</a>{% endif %}
                 </small>
               </p>
               <ul
