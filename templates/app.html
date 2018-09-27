@@ -200,7 +200,7 @@
               {% endfor %}
             </div>
 
-            {% if app.screenshots.length > 0 %}
+            {% if length(app.screenshots) > 1 %}
               <a
                 class="carousel-control-prev"
                 href="#screenshotsCarousel"
@@ -233,9 +233,9 @@
           >
             {% for screenshot in app.screenshots %}
               <li
-                class="nav-item active"
+                class="nav-item {% if loop.index == 1 %}active{% endif %}"
                 data-target="#screenshotsCarousel"
-                data-slide-to="0"
+                data-slide-to="{{loop.index0}}"
               >
                 <img
                   class="mb-2"
@@ -347,7 +347,7 @@
               <a href="/apps/{{similarApp.slug}}">
                 <img
                   class="mr-3"
-                  src="{{similarApp.image}}"
+                  src="/apps/{{similarApp.slug}}/main.png"
                   alt="Image of app"
                   style="max-width: 8em"
                 >
