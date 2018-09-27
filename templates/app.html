@@ -19,6 +19,8 @@
           <p>By <a href="{{app.developer.website}}">{{app.developer.name}}</a>
           </p>
 
+          <a href="/apps/{{app.slug}}/installation" class="d-none"></a>
+
           <form
             method="post"
             action="https://www.paypal.com/cgi-bin/webscr"
@@ -32,6 +34,8 @@
             <input type="hidden" name="image_url"
               value="https://pics.paypal.com/00/s/MjAwWDIwMFhQTkc/p/Y2Q4NGYzZWItZDI4Mi00NWQ3LTk4ZWUtNjgwMDdhMDJjMDk2/image_58.jpg">
             <input type="hidden" name="no_shipping" value="1">
+            <input type="hidden" name="return"
+              value="https://cliapp.store/apps/{{app.slug}}/installation">
 
             <button
               type="submit"

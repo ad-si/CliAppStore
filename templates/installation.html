@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block main %}
   <div class="container mt-4">
+
     <div class="jumbotron py-4">
       <div class="row">
         <div class="col-sm-5 text-center">
@@ -24,28 +25,59 @@
           </p>
 
           <a href="/apps/{{app.slug}}" class="btn btn-primary float-right">
-            Go Back to App
+            Go Back to App Page
           </a>
         </div>
       </div>
-
     </div>
 
-    <ul class="list-unstyled">
-      {% for installation in app.installations %}
-        <li class="media mb-3">
-          <img
-            class="img-fluid mr-3"
-            width="64px"
-            height="64px"
-            src="/images/{{installation.tool}}.svg"
-            alt="Icon of {{installation.tool}}"
-          >
-          <div class="media-body">
-            <h5 class="mt-0">{{installation.tool}}</h5>
-            <p><code>{{installation.command}}</code></p>
-          </div>
-        </li>
-      {% endfor %}
-    </ul>
+    <script>
+      function copyToClipboard (inputId) {
+        document
+          .getElementById(inputId)
+          .select()
+        document.execCommand('copy')
+      }
+    </script>
+
+    <div class="row justify-content-md-center">
+      <div class="col-10">
+        <ul class="list-unstyled">
+          {% for installation in app.installations %}
+            <li class="media mb-3">
+              <img
+                class="img-fluid mr-3"
+                width="64px"
+                height="64px"
+                src="/images/{{installation.tool}}.svg"
+                alt="Icon of {{installation.tool}}"
+              >
+              <div class="media-body">
+                <h5 class="mt-0">{{installation.tool}}</h5>
+                <div class="input-group input-group-sm mb-3">
+                  <input
+                    id="command-{{loop.index}}"
+                    type="text"
+                    class="form-control"
+                    value="{{installation.command}}"
+                    readonly
+                    style="font-family: SFMono-Regular, Menlo, Monaco, Consolas,
+                      'Liberation Mono', 'Courier New', monospace"
+                  >
+                  <div class="input-group-append">
+                    <button
+                      class="btn btn-outline-secondary btn-sm"
+                      type="button"
+                      onclick="copyToClipboard('command-{{loop.index}}')"
+                    >
+                      Copy
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
 {% endblock %}
