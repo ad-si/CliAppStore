@@ -21,6 +21,13 @@ and use the [Live Reload] Firefox plugin to auto reload the website.
 [Live Reload]: https://github.com/blaise-io/live-reload
 
 
+## Deployment
+
+1. Build the website with `make baked`
+1. Deploy the `./baked` directory with `surge ./baked`
+1. http://cliappstore.surge.sh
+
+
 ## Analytics
 
 Hosted on: [feram.usesfathom.com](https://feram.usesfathom.com)
