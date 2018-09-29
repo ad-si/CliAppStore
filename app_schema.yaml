@@ -22,6 +22,7 @@ definitions:
       - developer
       - similar
       - screenshots
+      - changelog_url
       - changelog
     properties:
       name: {type: string}
@@ -79,6 +80,7 @@ definitions:
       screenshots:
         type: array
         items: {type: string}
+      changelog_url: {type: string}
       changelog:
         type: array
         items:

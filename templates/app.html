@@ -314,10 +314,15 @@
       <div class="col">
         <h4 class="mb-3">Changelog</h4>
 
+        <p>
+          For more details, check out the
+          <a href="{{app.changelog_url}}">external changelog</a>.
+        </p>
+
         <ol class="list-unstyled">
           {% for release in app.changelog %}
             <li
-              class="mb-3 pb-3 border-bottom
+              class="my-2 pt-3 border-top
                 {% if loop.index != 1 %}
                   collapse is-collapsible
                 {% endif %}"
@@ -349,8 +354,12 @@
           {% endfor %}
           <li>
             <a class="d-block" data-toggle="collapse" href=".is-collapsible,#show-more,#show-less">
-              <div id="show-less" class="collapse">Less</div>
-              <div id="show-more" class="collapse show">More</div>
+              <div id="show-less" class="collapse">
+                Less <span style="font-size: 0.7em">▲</span>
+              </div>
+              <div id="show-more" class="collapse show">
+                Older Versions <span style="font-size: 0.7em">▼</span>
+              </div>
             </a>
           </li>
         </ol>
