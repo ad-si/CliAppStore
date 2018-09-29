@@ -1,0 +1,18 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 100 100"
+  style="margin-right: 0.5em"
+>
+  <rect rx="50" ry="50" width="100" height="100" fill="#eee"/>
+  <text
+    x="54"
+    y="70"
+    text-anchor="middle"
+    font-size="60"
+    font-weight="600"
+    font-family="'Source Code Pro', monospace"
+    fill="black"
+  >
+    <tspan>$></tspan>
+  </text>
+</svg>

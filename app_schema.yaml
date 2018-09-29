@@ -61,12 +61,21 @@ definitions:
       similar:
         type: array
         items:
-          type: object
-          required: [name, slug, description]
-          properties:
-            name: {type: string}
-            slug: {type: string}
-            description: {type: string}
+          oneOf:
+            # Tool is sold on the store
+            - type: object
+              required: [name, slug, description]
+              properties:
+                name: {type: string}
+                slug: {type: string}
+                description: {type: string}
+            # Tool is only available outside of the store
+            - type: object
+              required: [name, url, description]
+              properties:
+                name: {type: string}
+                url: {type: string}
+                description: {type: string}
       screenshots:
         type: array
         items: {type: string}

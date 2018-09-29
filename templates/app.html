@@ -362,18 +362,37 @@
         <ul class="list-unstyled">
           {% for similarApp in app.similar %}
             <li class="media">
-              <a href="/apps/{{similarApp.slug}}">
-                <img
-                  class="mr-3"
-                  src="/apps/{{similarApp.slug}}/main.png"
-                  alt="Image of app"
-                  style="max-width: 8em"
-                >
-              </a>
-              <div class="media-body">
-                <a class="text-dark" href="/apps/{{similarApp.slug}}">
-                  <h5 class="mt-0 mb-1">{{similarApp.name}}</h5>
+              {% if similarApp.slug %}
+                <a href="/apps/{{similarApp.slug}}">
+                  <img
+                    src="/apps/{{similarApp.slug}}/main.png"
+                    alt="Image of app"
+                    class="mr-3"
+                    style="max-width: 8em"
+                  >
                 </a>
+              {% else %}
+                <a href="{{similarApp.url}}">
+                  <img
+                    src="/images/app.svg"
+                    width="48px"
+                    height="48px"
+                    alt="Image of app"
+                    class="mr-3"
+                    style="max-width: 8em"
+                  >
+                </a>
+              {% endif %}
+              <div class="media-body">
+                {% if similarApp.slug %}
+                  <a class="text-dark" href="/apps/{{similarApp.slug}}">
+                    <h5 class="mt-0 mb-1">{{similarApp.name}}</h5>
+                  </a>
+                {% else %}
+                  <a class="text-dark" href="{{similarApp.url}}">
+                    <h5 class="mt-0 mb-1">{{similarApp.name}}</h5>
+                  </a>
+                {% endif %}
                 <p>{{similarApp.description}}</p>
               </div>
               </a>
