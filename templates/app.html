@@ -337,11 +337,13 @@
                   style="list-style-type: disc"
                 >
                   {% for change in release.changes %}
-                    <li>{{change}}</li>
+                    <li>{{change | markdown}}</li>
                   {% endfor %}
                 </ul>
               {% else %}
-                <p>{{release.description | markdown}}</p>
+                <div class="text-secondary">
+                  {{release.description | markdown}}
+                </div>
               {% endif %}
             </li>
           {% endfor %}
