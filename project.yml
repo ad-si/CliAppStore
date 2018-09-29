@@ -6,6 +6,7 @@ rules:
         type: file
         fetch: all
         path: './apps/*/main.yaml'
+        order: -mtime
     template: 'index.html'
 
   - pattern: '/static/{{path:**}}'

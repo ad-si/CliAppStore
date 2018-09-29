@@ -166,7 +166,10 @@
                 </p>
                 </div>
                 <div class="modal-footer">
-                  <a href="{{app.installation_url}}" class="btn btn-primary">
+                  <a
+                    href="/apps/{{app.slug}}/installation"
+                    class="btn btn-primary"
+                  >
                     I understand, forward me to the download
                   </a>
                 </div>
@@ -258,7 +261,7 @@
       <div class="col">
         <h4 class="mb-3">Description</h4>
 
-        <p>{{raw(app.description_long | replace("\n\n", "</p><p>"))}}</p>
+        <p>{{app.description_long | markdown}}</p>
       </div>
 
       <div class="col">
@@ -267,8 +270,12 @@
         <table class="table table-borderless">
           <tbody>
             <tr>
-              <th scope="row">Category</th>
-              <td>{{app.category}}</td>
+              <th scope="row">Tags</th>
+              <td>
+                {% for tag in app.tags %}
+                  <span class="badge badge-pill badge-info">{{tag}}</span>
+                {% endfor %}
+              </td>
             </tr>
             <tr>
               <th scope="row">Version</th>
@@ -323,14 +330,19 @@
                   {% if release.url %}</a>{% endif %}
                 </small>
               </p>
-              <ul
-                class="text-secondary"
-                style="list-style-type: disc"
-              >
-                {% for change in release.changes %}
-                  <li>{{change}}</li>
-                {% endfor %}
-              </ul>
+
+              {% if release.changes %}
+                <ul
+                  class="text-secondary"
+                  style="list-style-type: disc"
+                >
+                  {% for change in release.changes %}
+                    <li>{{change}}</li>
+                  {% endfor %}
+                </ul>
+              {% else %}
+                <p>{{release.description | markdown}}</p>
+              {% endif %}
             </li>
           {% endfor %}
           <li>
@@ -364,6 +376,11 @@
               </div>
               </a>
             </li>
+          {% else %}
+            <p class="text-secondary">
+              There are no similar apps available yet.
+            </p>
+            <a href="{{submit_url}}" class="btn btn-light">Submit One</a>
           {% endfor %}
         </ul>
       </div>

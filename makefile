@@ -31,7 +31,7 @@ all: \
 
 apps/%/main.png:
 	cat $(@D)/main.yaml \
-	| grep 'command: ' \
+	| grep '^command: ' \
 	| gsed "s/^command: ['\"]\(.*\)['\"]$$/\1/" \
 	> __temp__.sh
 	cp carbon-now.json ~/.carbon-now.json
@@ -49,3 +49,8 @@ baked: apps images templates project.yml
 	# No idea why those get generated
 	rm -r baked/apps/#pricingModal
 	rm -r baked/apps/installation
+
+
+.PHONY: validate
+validate:
+	npx pajv validate -s app_schema.yaml -d apps/\*/main.yaml

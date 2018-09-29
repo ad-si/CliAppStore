@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "description": "An app store for CLI apps.",
   "main": "project.yml",
-  "dependencies": {
-    "carbon-now-cli": "^1.1.0"
+  "devDependencies": {
+    "carbon-now-cli": "^1.1.0",
+    "pajv": "^1.2.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

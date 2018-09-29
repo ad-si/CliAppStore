@@ -1,0 +1,110 @@
+title: CLI App
+description: A CLI app from https://cliapp.store
+definitions:
+  basic_app:
+    type: object
+    required:
+      - state
+      - name
+      - slug
+      - description
+      - description_long
+      - tags
+      - website
+      - code
+      - license
+      - price
+      - command
+      - installation_url
+      - installations
+      - has_free_trail
+      - license_terms
+      - developer
+      - similar
+      - screenshots
+      - changelog
+    properties:
+      name: {type: string}
+      slug: {type: string}
+      description: {type: string}
+      description_long: {type: string}
+      tags:
+        type: array
+        items: {type: string}
+      website: {type: string}
+      code: {type: string}
+      license:
+        type: object
+        required: [name, url]
+        properties:
+          name: {type: string}
+          url: {type: string}
+      price: {type: number}
+      command: {type: string}
+      installation_url: {type: string}
+      installations:
+        type: array
+        items:
+          type: object
+          required: [tool, command]
+          properties:
+            tool: {type: string}
+            command: {type: string}
+      has_free_trail: {type: boolean}
+      license_terms: {type: string}
+      developer:
+        type: object
+        required: [name, website]
+        properties:
+          name: {type: string}
+          website: {type: string}
+      similar:
+        type: array
+        items:
+          type: object
+          required: [name, slug, description]
+          properties:
+            name: {type: string}
+            slug: {type: string}
+            description: {type: string}
+      screenshots:
+        type: array
+        items: {type: string}
+      changelog:
+        type: array
+        items:
+          oneOf:
+            - type: object
+              required: [version, utc, changes]
+              properties:
+                version: {type: string}
+                utc: {type: object}
+                changes:
+                  type: array
+                  items: {type: string}
+
+            - type: object
+              required: [version, utc, description]
+              properties:
+                version: {type: string}
+                utc: {type: object}
+                description: {type: string}
+
+oneOf:
+  - allOf:
+      - $ref: "#/definitions/basic_app"
+      - required: [paypal_account]
+        properties:
+          state: {const: published}
+          paypal_account: {type: string}
+
+  - allOf:
+      - $ref: "#/definitions/basic_app"
+      - required: [bitcoin_address]
+        properties:
+          state: {const: published}
+          bitcoin_address: {type: string}
+
+  - required: [state]
+    properties:
+      state: {const: draft}
