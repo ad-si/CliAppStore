@@ -6,10 +6,17 @@
       <div class="row">
         <div class="col-sm-5 text-center">
           <img
-            class="img-fluid"
+            class="img-fluid mb-3"
             src="/apps/{{app.slug}}/main.png"
             alt="Screenshot of CLI app {{app.name}}"
           >
+
+          <a
+            href="/apps/{{app.slug}}"
+            class="btn btn-primary btn-sm"
+          >
+            Go Back to App Page
+          </a>
         </div>
 
         <div class="col-sm">
@@ -23,10 +30,6 @@
           <p>Extended installation instructions are available
             <a href="{{app.installation_url}}">here</a>.
           </p>
-
-          <a href="/apps/{{app.slug}}" class="btn btn-primary float-right">
-            Go Back to App Page
-          </a>
         </div>
       </div>
     </div>
