@@ -14,6 +14,7 @@ definitions:
       - code
       - license
       - price
+      - accounts
       - command
       - installation_url
       - installations
@@ -41,6 +42,14 @@ definitions:
           name: {type: string}
           url: {type: string}
       price: {type: number}
+      accounts:
+        type: array
+        items:
+          type: object
+          required: [name, address]
+          properties:
+            name: {type: string}
+            address: {type: string}
       command: {type: string}
       installation_url: {type: string}
       installations:
@@ -104,17 +113,9 @@ definitions:
 oneOf:
   - allOf:
       - $ref: "#/definitions/basic_app"
-      - required: [paypal_account]
+      - required: [state]
         properties:
           state: {const: published}
-          paypal_account: {type: string}
-
-  - allOf:
-      - $ref: "#/definitions/basic_app"
-      - required: [bitcoin_address]
-        properties:
-          state: {const: published}
-          bitcoin_address: {type: string}
 
   - required: [state]
     properties:

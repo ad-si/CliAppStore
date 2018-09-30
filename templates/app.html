@@ -117,9 +117,7 @@
                         <li>
                           70 % ({{value_developer}} €)
                           go to the developer of the app
-                          <a href="{{app.developer.website}}">
-                            ({{app.developer.name}})
-                          </a>.
+                          (<a href="{{app.developer.website}}">{{app.developer.name}}</a>).
                           This amount is not transferred immediately,
                           but aggregated until a threshold of 10 € is exceeded
                           to reduce transaction costs.
@@ -353,6 +351,7 @@
             </li>
           {% endfor %}
           <li>
+            <hr>
             <a class="d-block" data-toggle="collapse" href=".is-collapsible,#show-more,#show-less">
               <div id="show-less" class="collapse">
                 Less <span style="font-size: 0.7em">▲</span>
