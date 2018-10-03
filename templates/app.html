@@ -46,7 +46,7 @@
             {% if app.price %}
               <button
                 type="submit"
-                class="btn font-weight-bold payment_button"
+                class="btn font-weight-bold payment_button mb-2"
               >
                 <span
                   class="d-inline-block align-middle pr-2
@@ -58,6 +58,10 @@
                     {% include "_paypal_icon.html" %}
                 </span>
               </button>
+              <small class="text-secondary d-inline-block">
+                After the payment you'll be redirected
+                to the installation page
+              </small>
             {% else %}
               <p>
                 <strong>Donate and Install</strong>

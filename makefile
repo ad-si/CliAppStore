@@ -46,9 +46,6 @@ apps/%/main.png:
 baked: apps images templates project.yml
 	sprinkles -bake
 	cp CNAME baked/CNAME
-	# No idea why those get generated
-	rm -r baked/apps/#pricingModal
-	rm -r baked/apps/installation
 
 
 .PHONY: validate
