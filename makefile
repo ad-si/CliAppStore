@@ -47,6 +47,13 @@ baked: apps images templates project.yml
 	sprinkles -bake
 	cp CNAME baked/CNAME
 
+.PHONY: deploy
+deploy: baked
+	surge baked
+
+.PHONY: stage
+stage: baked
+	surge baked cliappstore.surge.sh
 
 .PHONY: validate
 validate:
