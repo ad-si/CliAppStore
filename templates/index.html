@@ -42,7 +42,11 @@
                 </a>
                 <div class="card-body">
                   <small class="float-right text-muted">
-                    {{app.price}} €
+                    {% if app.price %}
+                      {{app.price | capitalize}} €
+                    {% else %}
+                      Free
+                    {% endif %}
                   </small>
                   <h5 class="card-title">
                     <a href="{{appUrl}}" class="text-dark">{{app.name}}</a>

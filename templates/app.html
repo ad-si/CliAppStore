@@ -37,67 +37,91 @@
             <input type="hidden" name="return"
               value="https://cliapp.store/apps/{{app.slug}}/installation">
 
-            <button
-              type="submit"
-              class="btn font-weight-bold"
-              style="background-color: #ffc439"
-            >
-              <span
-                class="d-inline-block align-middle pr-2
-                  border-right border-secondary"
+            <style>
+              .payment_button {
+                background-color: #ffc439;
+              }
+            </style>
+
+            {% if app.price %}
+              <button
+                type="submit"
+                class="btn font-weight-bold payment_button"
               >
-                <!-- Do not split over several lines (avoids whitesp. bugs) -->
-                {{app.price}} €</span><span class="pl-2 align-middle">Buy with
-                <svg
-                  width="60"
-                  height="18"
-                  viewBox="0 0 100 32"
-                  class="align-text-bottom position-relative"
-                  style="bottom: 1px"
+                <span
+                  class="d-inline-block align-middle pr-2
+                    border-right border-secondary"
                 >
-                  <path
-                    fill="#003087"
-                    d="M12 5H4.2c-.5 0-1 .3-1.1.8L0 25.8c-.1.4.2.7.6.7h3.7c.5 0 1-.4 1.1-.9l.8-5.4a1 1 0 0 1 1.1-.9h2.5c5.1 0 8.1-2.5 8.9-7.4.3-2 0-3.8-1-5-1.1-1.3-3.1-2-5.7-2zm.9 7.2C12.5 15 10.3 15 8.3 15H7.1l.8-5.2c0-.3.3-.5.6-.5H9c1.4 0 2.7 0 3.4.8.5.4.7 1.1.5 2.1zM35.2 12.1h-3.7c-.3 0-.6.2-.6.5l-.2 1-.3-.4c-.8-1.2-2.6-1.6-4.4-1.6a8.6 8.6 0 0 0-8.3 7.5c-.4 2.2.1 4.3 1.4 5.7a6 6 0 0 0 4.7 2c3.3 0 5.2-2.2 5.2-2.2l-.2 1c-.1.4.2.8.6.8h3.4c.5 0 1-.4 1.1-.9l2-12.8c.1-.2-.3-.6-.7-.6zm-5.1 7.2c-.4 2.1-2 3.6-4.2 3.6-1.1 0-1.9-.3-2.5-1-.6-.7-.8-1.6-.6-2.6a4.2 4.2 0 0 1 4.2-3.6c1.1 0 1.9.4 2.5 1 .5.7.7 1.6.6 2.6zM55.1 12.1h-3.7a1 1 0 0 0-.9.5l-5.2 7.6-2.2-7.3c-.1-.5-.6-.8-1-.8h-3.7c-.4 0-.8.4-.6 1l4.1 12-3.9 5.4c-.3.4 0 1 .5 1h3.7c.4 0 .7-.2.9-.5l12.5-18c.3-.3 0-.9-.5-.9z"
-                  />
-                  <path
-                    fill="#009cde"
-                    d="M67.5 5h-7.8c-.5 0-1 .3-1.1.8l-3.1 20c-.1.3.2.6.6.6h4c.4 0 .7-.3.7-.6l.9-5.7a1 1 0 0 1 1.1-.9h2.5c5.1 0 8.1-2.5 8.9-7.4.3-2 0-3.8-1-5C72 5.6 70.1 5 67.5 5zm.9 7.2C68 15 65.8 15 63.8 15h-1.2l.8-5.2c0-.3.3-.5.6-.5h.5c1.4 0 2.7 0 3.4.8.5.4.6 1.1.5 2.1zM90.7 12.1H87c-.3 0-.6.2-.6.5l-.2 1-.3-.4c-.8-1.2-2.6-1.6-4.4-1.6a8.6 8.6 0 0 0-8.3 7.5c-.4 2.2.1 4.3 1.4 5.7a6 6 0 0 0 4.7 2c3.3 0 5.2-2.2 5.2-2.2l-.2 1c-.1.4.2.8.6.8h3.4c.5 0 1-.4 1.1-.9l2-12.8c0-.2-.3-.6-.7-.6zm-5.2 7.2c-.4 2.1-2 3.6-4.2 3.6-1.1 0-1.9-.3-2.5-1-.6-.7-.8-1.6-.6-2.6a4.2 4.2 0 0 1 4.2-3.6c1.1 0 1.9.4 2.5 1 .6.7.8 1.6.6 2.6zM95.1 5.4l-3.2 20.3c-.1.4.2.7.6.7h3.2c.5 0 1-.4 1.1-.9L100 5.6c.1-.4-.2-.7-.6-.7h-3.6c-.4 0-.6.2-.7.5z"
-                  />
-                </svg>
-              </span>
-            </button>
+                  <!-- Do not split over several lines
+                    to avoid whitespace bugs -->
+                  {{app.price}} €</span><span class="pl-2 align-middle">Buy with
+                    {% include "_paypal_icon.html" %}
+                </span>
+              </button>
+            {% else %}
+              <p>
+                <strong>Donate and Install</strong>
+                <br>
+                <small class="text-secondary">
+                  After the donation you'll be redirected
+                  to the installation page
+                </small>
+              </p>
+
+              <button type="submit" class="btn font-weight-bold payment_button">
+                1 €</button>
+              <button type="submit" class="btn font-weight-bold payment_button">
+                3 €</button>
+              <button type="submit" class="btn font-weight-bold payment_button">
+                5 €</button>
+              <button type="submit" class="btn font-weight-bold payment_button">
+                10 €</button>
+            {% endif %}
 
             <img alt="Tracking pixel" border="0" width="1" height="1"
               src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"
             >
           </form>
 
-          {% set license_terms = raw(app.license_terms
-              | replace("\n\n", "</p><p>")) %}
+          {% set license_terms = app.license_terms | markdown %}
 
           <div class="text-secondary">
-            <small>
-              <a href="#pricingModal"
-                data-toggle="modal" class="text-secondary"
-              >
-                Pricing info
-              </a>
-              {% if app.has_free_trail %}
-                <span> • </span>
-                <a href="#trialModal"
+            <p>
+              {% if app.price == 0 %}
+                <small>
+                  <a href="#freeModal"
+                    data-toggle="modal" class="text-secondary"
+                  >
+                    I really can't afford a donation
+                  </a>
+                </small>
+              {% endif %}
+              {% if app.has_free_trail && app.price != 0 %}
+                <small>
+                  <a href="#trialModal"
+                    data-toggle="modal" class="text-secondary"
+                  >
+                    Free trial version
+                  </a>
+                </small>
+              {% endif %}
+            </p>
+            <p>
+              <small>
+                <a href="#pricingModal"
                   data-toggle="modal" class="text-secondary"
                 >
-                  Free trial version
+                  Payment info
                 </a>
-              {% endif %}
-            </small>
+              </small>
+            </p>
           </div>
 
           <div id="pricingModal" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Pricing Info</h5>
+                  <h5 class="modal-title">Payment Info</h5>
                   <button type="button" class="close"
                     data-dismiss="modal" aria-label="Close"
                   >
@@ -111,19 +135,27 @@
                   {% set value_store = round(value_net * 0.3 * 100) / 100 %}
                   {% set value_developer = value_net - value_store %}
                   <ul>
-                    <li> 19 % ({{value_vat}} €) is German VAT</li>
-                    <li>Of the remaining 81 % ({{value_net}} €)
+                    <li> 19 % {% if app.price %}({{value_vat}} €){% endif %}
+                      is German VAT
+                    </li>
+                    <li>
+                      Of the remaining 81 %
+                      {% if app.price %}({{value_net}} €){% endif %}
                       <ul>
                         <li>
-                          70 % ({{value_developer}} €)
+                          70 %
+                          {% if app.price %}({{value_developer}} €){% endif %}
                           go to the developer of the app
-                          (<a href="{{app.developer.website}}">{{app.developer.name}}</a>).
-                          This amount is not transferred immediately,
-                          but aggregated until a threshold of 10 € is exceeded
-                          to reduce transaction costs.
+                          (<a href="{{app.developer.website}}">
+                            {{app.developer.name}}</a>).
+                          <small>
+                            This amount is not transferred immediately,
+                            but aggregated until a threshold of 10 € is exceeded
+                            to reduce transaction costs.
+                          </small>
                         </li>
                         <li>
-                          30 % ({{value_store}} €)
+                          30 % {% if app.price %}({{value_store}} €){% endif %}
                           go to us (<a href="https://feram.io">Feram GmbH</a>)
                           in order to power this website and ensure a
                           sustainable development.
@@ -131,6 +163,7 @@
                       </ul>
                     </li>
                   </ul>
+                  <hr>
                   {{license_terms}}
                 </div>
                 <div class="modal-footer">
@@ -139,6 +172,42 @@
                   >
                     Close
                   </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="freeModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Free Version</h5>
+                  <button type="button" class="close"
+                    data-dismiss="modal" aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    While {{app.name}} is also freely available and therefore
+                    you're not obliged to donate anything to use it,
+                    please bare in mind that it's a lot of effort
+                    to develop {{app.name}} and cliapp.store.
+                  </p>
+                  <p><strong>
+                    We depend on your financial support to be able
+                    to maintain and extend {{app.name}} and cliapp.store
+                    in the future!
+                  </strong></p>
+                </div>
+                <div class="modal-footer">
+                  <a
+                    href="/apps/{{app.slug}}/installation"
+                    class="btn btn-primary"
+                  >
+                    I understand, forward me to {{app.name}}'s website
+                  </a>
                 </div>
               </div>
             </div>
@@ -160,8 +229,13 @@
                     You can try out {{app.name}} for free.
                     To use it regularly, you must buy a license.
                   </strong></p>
+                  <p>
+                    There is no way for us to enforce this,
+                    but we're counting on your honesty to
+                    acknowledge when you should pay for it.
+                  </p>
+                  <hr>
                   <p>{{license_terms}}</p>
-                </p>
                 </div>
                 <div class="modal-footer">
                   <a
@@ -281,7 +355,13 @@
             </tr>
             <tr>
               <th scope="row">Price</th>
-              <td>{{app.price}} €</td>
+              <td>
+                {% if app.price %}
+                  {{app.price | capitalize}} €
+                {% else %}
+                  Free
+                {% endif %}
+              </td>
             </tr>
             <tr>
               <th scope="row">App Website</th>
