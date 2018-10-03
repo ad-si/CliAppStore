@@ -83,8 +83,6 @@
             >
           </form>
 
-          {% set license_terms = app.license_terms | markdown %}
-
           <div class="text-secondary">
             <p>
               {% if app.price == 0 %}
@@ -105,8 +103,7 @@
                   </a>
                 </small>
               {% endif %}
-            </p>
-            <p>
+              <span class="mx-1">|</span>
               <small>
                 <a href="#pricingModal"
                   data-toggle="modal" class="text-secondary"
@@ -148,6 +145,7 @@
                           go to the developer of the app
                           (<a href="{{app.developer.website}}">
                             {{app.developer.name}}</a>).
+                          <br>
                           <small>
                             This amount is not transferred immediately,
                             but aggregated until a threshold of 10 € is exceeded
@@ -163,8 +161,10 @@
                       </ul>
                     </li>
                   </ul>
-                  <hr>
-                  {{license_terms}}
+                  {% if app.license_terms %}
+                    <hr>
+                    <p>{{app.license_terms | markdown}}</p>
+                  {% endif %}
                 </div>
                 <div class="modal-footer">
                   <button type="button"
@@ -196,14 +196,15 @@
                     to develop {{app.name}} and cliapp.store.
                   </p>
                   <p><strong>
-                    We depend on your financial support to be able
+                    We and the developers of {{app.name}} depend on your
+                    financial support to be able
                     to maintain and extend {{app.name}} and cliapp.store
                     in the future!
                   </strong></p>
                 </div>
                 <div class="modal-footer">
                   <a
-                    href="/apps/{{app.slug}}/installation"
+                    href="{{app.website}}"
                     class="btn btn-primary"
                   >
                     I understand, forward me to {{app.name}}'s website
@@ -234,8 +235,10 @@
                     but we're counting on your honesty to
                     acknowledge when you should pay for it.
                   </p>
-                  <hr>
-                  <p>{{license_terms}}</p>
+                  {% if app.license_terms %}
+                    <hr>
+                    <p>{{app.license_terms | markdown}}</p>
+                  {% endif %}
                 </div>
                 <div class="modal-footer">
                   <a
