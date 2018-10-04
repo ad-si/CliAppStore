@@ -22,39 +22,55 @@
     </div>
   </section>
 
+  {% macro app_tile(name, slug, url, price, description) %}
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+        <a href="{{url}}">
+          <img
+            class="card-img-top img-fluid"
+            src="/apps/{{slug}}/main.png"
+            alt="Screenshot of CLI app {{name}}"
+          />
+        </a>
+        <div class="card-body">
+          <small class="float-right text-muted">
+            {% if price %}
+              {{price | capitalize}} €
+            {% else %}
+              Free
+            {% endif %}
+          </small>
+          <h5 class="card-title">
+            <a href="{{url}}" class="text-dark">{{name}}</a>
+          </h5>
+          <p class="card-text">{{description}}</p>
+        </div>
+      </div>
+    </div>
+  {% endmacro %}
+
   <div class="py-5 bg-light">
     <div class="container">
-      <div class="row">
+      <h4>Featured</h4>
 
+      <div class="row">
         {% for app in apps %}
-          {% if app.state != "draft" %}
+          {% if app.state == "featured" %}
+            {% set slug = app.slug | urlencode %}
+            {{ app_tile(app.name, slug, '/apps/' ~ slug,
+                app.price, app.description) }}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <hr class="mb-5">
+
+      <div class="row">
+        {% for app in apps %}
+          {% if app.state == "published" %}
             {% set slug = app.slug | urlencode %}
             {% set appUrl = '/apps/' ~ slug %}
-
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <a href="{{appUrl}}">
-                  <img
-                    class="card-img-top img-fluid"
-                    src="/apps/{{slug}}/main.png"
-                    alt="Screenshot of CLI app {{app.name}}"
-                  />
-                </a>
-                <div class="card-body">
-                  <small class="float-right text-muted">
-                    {% if app.price %}
-                      {{app.price | capitalize}} €
-                    {% else %}
-                      Free
-                    {% endif %}
-                  </small>
-                  <h5 class="card-title">
-                    <a href="{{appUrl}}" class="text-dark">{{app.name}}</a>
-                  </h5>
-                  <p class="card-text">{{app.description}}</p>
-                </div>
-              </div>
-            </div>
+            {{ app_tile(app.name, slug, appUrl, app.price, app.description) }}
           {% endif %}
         {% endfor %}
       </div>

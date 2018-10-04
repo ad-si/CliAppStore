@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-sm-5 text-center">
           <img
-            class="img-fluid"
+            class="img-fluid mb-3"
             src="/apps/{{app.slug}}/main.png"
             alt="Screenshot of CLI app {{app.name}}"
           >
@@ -58,7 +58,7 @@
                     {% include "_paypal_icon.html" %}
                 </span>
               </button>
-              <small class="text-secondary d-inline-block mb-2">
+              <small class="text-secondary d-block mb-2">
                 After the payment you'll be redirected
                 to the installation page
               </small>
@@ -104,7 +104,7 @@
             {% endif %}
           </form>
 
-          <div class="text-secondary">
+          <div class="text-secondary mt-2">
             <p>
               {% if app.price == 0 %}
                 <small>
