@@ -30,6 +30,13 @@
           <p>Extended installation instructions are available
             <a href="{{app.installation_url}}">here</a>.
           </p>
+
+          <p>
+            Please consider also to donate to the package manager
+            your're using.
+            Without it installing CLI apps would be much more complicated.
+            The icons link to their pages.
+          </p>
         </div>
       </div>
     </div>
@@ -48,7 +55,12 @@
         <ul class="list-unstyled">
           {% for installation in app.installations %}
             <li class="media mb-3">
-              <a href="{{package_managers[installation.tool]}}">
+              <a href="{% if package_managers[installation.tool].slug %}
+                  /apps/{{package_managers[installation.tool].slug}}
+                {% else %}
+                  {{package_managers[installation.tool].url}}
+                {% endif %}
+                ">
                 <img
                   class="img-fluid mr-3"
                   width="64px"

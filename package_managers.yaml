@@ -18,6 +18,7 @@ cpanm:
 
 curl:
   url: https://curl.haxx.se/
+  slug: curl
 
 dnf:
   url: https://rpm-software-management.github.io/
@@ -33,6 +34,7 @@ go:
 
 homebrew:
   url: https://brew.sh/
+  slug: homebrew
 
 layman:
   url: https://wiki.gentoo.org/wiki/Layman
