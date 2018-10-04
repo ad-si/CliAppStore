@@ -43,18 +43,21 @@
       }
     </script>
 
-    <div class="row justify-content-md-center">
+    <div class="row justify-content-md-center mb-5">
       <div class="col-10">
         <ul class="list-unstyled">
           {% for installation in app.installations %}
             <li class="media mb-3">
-              <img
-                class="img-fluid mr-3"
-                width="64px"
-                height="64px"
-                src="/images/{{installation.tool}}.svg"
-                alt="Icon of {{installation.tool}}"
-              >
+              <a href="{{package_managers[installation.tool]}}">
+                <img
+                  class="img-fluid mr-3"
+                  width="64px"
+                  height="64px"
+                  src="/images/{{installation.tool}}.svg"
+                  alt="Icon of {{installation.tool}}"
+                  style="max-height: 64px"
+                >
+              </a>
               <div class="media-body">
                 <h5 class="mt-0">{{installation.tool}}</h5>
                 <div class="input-group input-group-sm mb-3">

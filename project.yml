@@ -1,3 +1,5 @@
+data:
+
 rules:
   - pattern: '/'
     data:
@@ -26,7 +28,9 @@ rules:
 
   - pattern: '/apps/{{name:*}}/installation'
     data:
-      app: 'file://apps/{{name}}/main.yaml'
+      - app: 'file://apps/{{name}}/main.yaml'
+      - package_managers: 'file://package_managers.yaml'
+
     template: 'installation.html'
 
   - pattern: '/apps/{{appName:*}}/{{fileName:**}}'
