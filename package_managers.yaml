@@ -44,7 +44,7 @@ nix:
   url: https://nixos.org/nix/
 
 npm:
-  url: https://npm.org/
+  url: https://www.npmjs.com/
 
 pacman:
   url: https://wiki.archlinux.org/index.php/pacman
