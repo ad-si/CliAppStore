@@ -11,6 +11,11 @@ rules:
         order: -mtime
     template: 'index.html'
 
+  - pattern: '/favicon.ico'
+    static: true
+    data:
+      file: 'file://./favicon.ico'
+
   - pattern: '/static/{{path:**}}'
     static: true
     data:
