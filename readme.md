@@ -38,3 +38,6 @@ Hosted on: [feram.usesfathom.com](https://feram.usesfathom.com)
 - Check out https://graphcms.com
 - Check out GUIs Considered Harmful (1998) // Hacker News
   (http://porkmail.org/era/unix/guis.txt)
+- Redirect surge.sh url
+- Add comparison page.
+    E.g. https://cliapp.store/comparisons/vim/neovim
