@@ -23,8 +23,23 @@
 
           <p class="text-secondary">{{app.description}}</p>
 
-          <p>By <a href="{{app.developer.website}}">{{app.developer.name}}</a>
+          <p>
+            {{ app.maintainer ? "Developed by" : "By" }}
+            <a href="{{app.developer.website}}">{{app.developer.name}}</a>
           </p>
+
+          {% if app.maintainer %}
+            <p>
+              Maintained by
+              <a href="{{app.maintainer.website}}">{{app.maintainer.name}}</a>
+              <a
+                class="btn btn-sm btn-outline-secondary align-baseline ml-2"
+                href="https://github.com/feramhq/cli-apps/#claim-stewardship"
+              >
+                Claim Stewardship
+              </a>
+            </p>
+          {% endif %}
 
           <a href="/apps/{{app.slug}}/installation" class="d-none"></a>
 
@@ -136,7 +151,7 @@
                 <a href="#pricingModal"
                   data-toggle="modal" class="text-secondary"
                 >
-                  Payment info
+                  {{ app.price ? "Payment" : "Donation" }} Info
                 </a>
               </small>
             </p>
@@ -146,7 +161,9 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Payment Info</h5>
+                  <h5 class="modal-title">
+                    {{ app.price ? "Payment" : "Donation" }} Info
+                  </h5>
                   <button type="button" class="close"
                     data-dismiss="modal" aria-label="Close"
                   >
@@ -154,13 +171,26 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <p>The payment is composed of following parts:</p>
-                  {% set value_vat = round(app.price * 0.19 * 100) / 100 %}
+                  <p>
+                    The {{ app.price ? "payment" : "donation" }}
+                    is composed of following parts:
+                  </p>
+                  {% set frac_vat = 0.19 %}
+                  {% set frac_store = 0.2 %}
+                  {% set frac_maintainer = app.maintainer ? 0.2 : 0 %}
+                  {% set frac_developer = 1 - frac_store - frac_maintainer %}
+
+                  {% set value_vat = round(app.price * frac_vat * 100) / 100 %}
                   {% set value_net = app.price - value_vat %}
-                  {% set value_store = round(value_net * 0.3 * 100) / 100 %}
+                  {% set value_store =
+                    round(value_net * frac_store * 100) / 100 %}
+                  {% set value_maintainer =
+                    round(value_net * frac_maintainer * 100) / 100 %}
                   {% set value_developer = value_net - value_store %}
                   <ul>
-                    <li> 19 % {% if app.price %}({{value_vat}} €){% endif %}
+                    <li>
+                      <strong>19 %</strong>
+                      {% if app.price %}({{value_vat}} €){% endif %}
                       is German VAT
                     </li>
                     <li>
@@ -168,27 +198,36 @@
                       {% if app.price %}({{value_net}} €){% endif %}
                       <ul>
                         <li>
-                          70 %
+                          <strong>{{frac_developer * 100}} %</strong>
                           {% if app.price %}({{value_developer}} €){% endif %}
                           go to the developer of the app
-                          (<a href="{{app.developer.website}}">
-                            {{app.developer.name}}</a>).
-                          <br>
-                          <small>
-                            This amount is not transferred immediately,
-                            but aggregated until a threshold of 10 € is exceeded
-                            to reduce transaction costs.
-                          </small>
+                          (<a href="{{app.developer.website}}">{{
+                            app.developer.name}}</a>).
                         </li>
+                        {% if app.maintainer %}
+                          <li>
+                            <strong>{{frac_maintainer * 100}} %</strong>
+                            {% if app.price %}({{value_store}} €){% endif %}
+                            go to the maintainer of the app
+                            (<a href="{{app.maintainer.website}}">{{
+                              app.maintainer.name}}</a>)
+                            in order to keep this app's page up to date.
+                          </li>
+                        {% endif %}
                         <li>
-                          30 % {% if app.price %}({{value_store}} €){% endif %}
+                          <strong>{{frac_store * 100}} %</strong>
+                          {% if app.price %}({{value_store}} €){% endif %}
                           go to us (<a href="https://feram.io">Feram GmbH</a>)
-                          in order to power this website and ensure a
-                          sustainable development.
+                          in order to power cliapp.store.
                         </li>
                       </ul>
                     </li>
                   </ul>
+                  <small>
+                    The amounts are not transferred immediately,
+                    but aggregated until a threshold of 10 € is exceeded
+                    to reduce transaction costs.
+                  </small>
                   {% if app.license_terms %}
                     <hr>
                     <p>{{app.license_terms | markdown}}</p>

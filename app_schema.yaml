@@ -70,6 +70,12 @@ definitions:
         properties:
           name: {type: string}
           website: {type: string}
+      maintainer:
+        type: object
+        required: [name, website]
+        properties:
+          name: {type: string}
+          website: {type: string}
       similar:
         type: array
         items:
