@@ -12,6 +12,7 @@ definitions:
       - tags
       - website
       - code
+      - issues
       - license
       - price
       - accounts
@@ -35,6 +36,7 @@ definitions:
         items: {type: string}
       website: {type: string}
       code: {type: string}
+      issues: {type: string}
       license:
         type: object
         required: [name, url]
@@ -98,7 +100,7 @@ definitions:
               required: [version, utc, changes]
               properties:
                 version: {type: string}
-                utc: {type: object}
+                utc: {type: string}
                 changes:
                   type: array
                   items: {type: string}
@@ -107,15 +109,21 @@ definitions:
               required: [version, utc, description]
               properties:
                 version: {type: string}
-                utc: {type: object}
+                utc: {type: string}
                 description: {type: string}
 
 oneOf:
   - allOf:
-      - $ref: "#/definitions/basic_app"
-      - required: [state]
-        properties:
-          state: {const: published}
+    - $ref: "#/definitions/basic_app"
+    - required: [state]
+      properties:
+        state: {const: published}
+
+  - allOf:
+    - $ref: "#/definitions/basic_app"
+    - required: [state]
+      properties:
+        state: {const: featured}
 
   - required: [state]
     properties:

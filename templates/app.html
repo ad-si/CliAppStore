@@ -13,10 +13,10 @@
 
         <div class="col-sm">
           <a
-            href="https://github.com/feramhq/cli-apps/blob/master/{{app.slug}}/main.yaml"
+            href="https://github.com/feramhq/cli-apps/edit/master/{{app.slug}}/main.yaml"
             class="btn btn-outline-secondary float-right"
           >
-            Edit
+            Propose Changes
           </a>
 
           <h1>{{app.name}}</h1>
@@ -401,6 +401,10 @@
             <tr>
               <th scope="row">Sourcecode</th>
               <td><a href="{{app.code}}">{{app.code}}</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Issue Tracker</th>
+              <td><a href="{{app.issues}}">{{app.issues}}</a></td>
             </tr>
             <tr>
               <th scope="row">Developer Website</th>
