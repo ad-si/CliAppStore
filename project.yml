@@ -16,6 +16,9 @@ rules:
     data:
       file: 'file://./favicon.ico'
 
+  - pattern: '/faq'
+    template: 'faq.html'
+
   - pattern: '/static/{{path:**}}'
     static: true
     data:

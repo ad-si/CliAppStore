@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block main %}
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-7 py-4" lang="en" style="hyphens: auto">
+        <h2>Frequently Asked Questions</h2>
+        <hr>
+        <dl>
+          <dt class="mb-2">Why do I need cliapp.store?</dt>
+          <dd class="mb-4 text-justify" style="column-count:2;">
+            There does not yet exist a good website to discover CLI apps,
+            to find similar / related ones, to compare them and
+            to easily install them.
+          </dd>
+          <dt class="mb-2">Why is this better than a package manager?</dt>
+          <dd class="mb-4 text-justify" style="column-count:2;">
+            <p>
+              Most package managers cater only to one language
+              (e.g. npm for JavaScript, pip for Python)
+              or to one ecosystem
+              (e.g. Homebrew for MacOS, Chocolatey for Windows).
+              Furthermore they often lack a GUI to simplify the browsing
+              of the provided apps.
+            </p>
+            <p>
+              Cliapp.store aims to be a cross language and cross platform
+              app store to simplify the discovery, installation and management
+              of CLI apps.
+            </p>
+          </dd>
+          <dt class="mb-2">Have you contacted the owners of the apps?</dt>
+          <dd class="mb-4 text-justify" style="column-count:2;">
+            I contacted a few.
+            Some were exited for possible additional revenue streams,
+            some wanted me to donate any profit I would make with their apps
+            to other causes like amnesty international,
+            but most seemed indifferent.
+
+            For free software there is no permission required to distribute
+            it for a fee.
+            Make sure to read
+            <a href="https://www.gnu.org/philosophy/selling.en.html">
+              gnu.org/philosophy/selling
+            </a>
+            for more information.
+          </dd>
+          <dt class="mb-2">Aren't CLI apps always open source and for free?</dt>
+          <dd class="mb-4 text-justify" style="column-count:2;">
+            <p>While many CLI apps are open source / free, we assume
+              that a large share of them are accidentally so
+              because:
+            </p>
+            <ul>
+              <li>There is no other way to publish them
+                and to make them available.
+              </li>
+              <li>It's cumbersome to build a dedicated website and webshop
+                to sell an app
+              </li>
+              <li>Developers open source the apps
+                as a means of self marketing
+                altough the payoff does not properly reflect the effort.
+              </li>
+              <li>Large companies can cross fund the development or
+                write off the expenses as marketing, which drives out
+                independent developers.
+              </li>
+            </ul>
+            <p>
+              And an even larger number of CLI apps probaly just hasn't been
+              published yet.
+              Among the reasons for this is that Developers …
+            </p>
+            <ul>
+              <li>… build the apps only for themselves
+                and never publish them due to a lack of incentives.
+              </li>
+              <li>… only partly finish the apps due to insufficient funding
+              </li>
+              <li>… can not afford to maintain them after a release.
+              </li>
+              <li>… add unnecessary GUIs / wrappers to the CLI apps
+                and sell them in desktop / alternative app stores instead.
+              </li>
+              <li>… sell the CLI apps as a SaaS product although
+                they are more suited for direct licensing.
+              </li>
+            </ul>
+          </dd>
+          <dt class="mb-2">How does it work?</dt>
+          <dd class="mb-4 text-justify" style="column-count:2;">
+            After the payment process you get redirected to the installation page.
+            At the moment it lists all the possible installation methods.
+            In the future cliapp.store will provide an extra package manger
+            with an additional focus on performance and security
+            and ease of use.
+          </dd>
+          <dt class="mb-2">What are the payment conditions?</dt>
+          <dd class="mb-4 text-justify" style="column-count:2;">
+          </dd>
+          <dt class="mb-2">How can I submit an app?</dt>
+          <dd class="mb-4 text-justify" style="column-count:2;">
+          </dd>
+          <dt class="mb-2">How can I claim stewardship of an app?</dt>
+          <dd class="mb-4 text-justify" style="column-count:2;">
+          </dd>
+        </dl>
+
+        <a href="/comparison/hledger/transity"></a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
