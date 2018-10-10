@@ -1,0 +1,13 @@
+description: Minimal implementation of the UNIX tree command with colors
+intallation:
+  all:
+    npm: @aweary/alder
+    yarn: @aweary/alder
+
+tags:
+  - color
+  - tree
+  - npm
+
+alternatives:
+  - tree

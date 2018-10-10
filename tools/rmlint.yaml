@@ -1,0 +1,5 @@
+description: Fast tool to remove duplicates and other lint from your filesystem
+links:
+  - http://rmlint.rtfd.org
+tags:
+  - duplicates

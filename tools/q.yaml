@@ -1,0 +1,5 @@
+description: Run SQL directly on CSV or TSV files
+links:
+  - https://github.com/harelba/q
+alternatives:
+  - textql

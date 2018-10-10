@@ -1,0 +1,5 @@
+description: Compare files ignoring small numeric differences and different numeric formats
+tags:
+  - diff
+  - numbers
+  - compare

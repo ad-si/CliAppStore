@@ -1,0 +1,11 @@
+description: Fuzzy select anything
+
+tags:
+  - fuzzy
+  - find
+  - search
+
+alternatives:
+  - find
+  - fzf
+

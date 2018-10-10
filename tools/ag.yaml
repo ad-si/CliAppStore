@@ -1,0 +1,7 @@
+description: Recursively search for PATTERN in PATH really fast.
+tags:
+  - search
+
+alternatives:
+  - ack
+  - grep

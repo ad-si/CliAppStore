@@ -1,0 +1,12 @@
+installation:
+  linux: https://github.com/wting/autojump#linux
+  mac:
+    brew: autojump
+  windows: https://github.com/wting/autojump#windows
+
+tags:
+  - jumper
+
+alternatives:
+  - fasd
+  - z

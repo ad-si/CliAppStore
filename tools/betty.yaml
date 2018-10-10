@@ -1,0 +1,7 @@
+description: Friendly English-like interface for your command line
+url: https://github.com/pickhardt/betty
+installation:
+  all:
+    https://github.com/pickhardt/betty#set-up
+tags:
+  - bot

@@ -1,0 +1,10 @@
+description: Terminal markdown reader with color.
+links:
+  - https://github.com/mrchimp/mdr
+
+tags:
+  - markdown
+  - viewer
+alternatives:
+  - msee
+  - terminal_markdown_viewer

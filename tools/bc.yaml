@@ -1,0 +1,9 @@
+description: Basic calculator
+tags:
+  - calculator
+
+alternatives:
+  - calc
+  - python
+  - node
+  - irb

@@ -1,0 +1,7 @@
+description: A search tool like grep, optimized for programmers
+tags:
+  - search
+
+alternatives:
+  - grep
+  - ag

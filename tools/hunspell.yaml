@@ -1,0 +1,6 @@
+description: Spell checker, stemmer and morphological analyzer
+tags:
+  - spell-checker
+
+alternatives:
+  - aspell

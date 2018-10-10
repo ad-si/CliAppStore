@@ -1,0 +1,10 @@
+description: General-purpose command-line fuzzy finder
+
+tags:
+  - search
+  - find
+  - fuzzy
+
+alternatives:
+  - find
+  - locate

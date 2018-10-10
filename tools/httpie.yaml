@@ -1,0 +1,7 @@
+description: Command line HTTP client and user-friendly cURL replacement.
+tags:
+  - http
+  - client
+
+alternatives:
+  - curl

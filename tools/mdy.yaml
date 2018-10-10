@@ -1,0 +1,20 @@
+links:
+  - https://github.com/IonicaBizau/mdy
+
+installations:
+  - npm install --global mdy
+  - yarn global add mdy
+
+tags:
+  - markdown
+  - viewer
+
+alternatives:
+  - ansidown
+  - ansimd
+  - mdless
+  - mdr
+  - mdv
+  - nd
+  - terminal_markdown_viewer
+  - msee

@@ -1,0 +1,12 @@
+description: Instant coding answers via the command line
+installation: pip install howdoi
+alternatives:
+  - bro
+  - cheat
+  - how2
+  - man
+  - tldr
+
+tags:
+  - manual
+  - command

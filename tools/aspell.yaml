@@ -1,0 +1,6 @@
+descriptions: Interactive spell checker
+tags:
+  - spell-check
+
+alternatives:
+  - hunspell

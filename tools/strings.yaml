@@ -1,0 +1,5 @@
+description: Find the printable strings in a object, or other binary, file
+tags:
+  - filter
+input: binary
+output: text

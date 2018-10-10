@@ -1,0 +1,8 @@
+description: Compare three files and show any differences among them
+tags:
+  - diff
+
+alternatives:
+  - diff
+  - colordiff
+  - icdiff

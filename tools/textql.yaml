@@ -1,0 +1,12 @@
+description: Execute SQL against structured text like CSV or TSV
+links:
+  - https://github.com/dinedal/textql)
+
+tags:
+  - sql
+  - csv
+  - tsv
+  - viewer
+
+alternatives:
+  - q

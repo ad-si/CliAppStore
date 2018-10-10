@@ -1,0 +1,13 @@
+description: Create and view interactive cheatsheets.
+links:
+  - https://github.com/chrisallenlane/cheat
+
+tags:
+  - manual
+  - command
+
+alternatives:
+  - tldr
+  - man
+  - bro
+  - howdoi

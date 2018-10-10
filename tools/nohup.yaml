@@ -1,0 +1,10 @@
+description: Invoke a utility immune to hangups
+tags:
+  - command
+  - execution
+
+alternatives:
+  - forever
+  - supervisor
+  - tmux
+  - screen

@@ -1,0 +1,4 @@
+command: 'man ascii'
+description: Print the ascii tables in octal, hexadeciamal and decimal
+tags:
+  - reference

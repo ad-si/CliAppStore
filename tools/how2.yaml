@@ -1,0 +1,13 @@
+description: Find the simplest way to do something in a unix shell.
+installation: npm install -g how2
+
+alternatives:
+  - bro
+  - cheat
+  - howdoi
+  - man
+  - tldr
+
+tags:
+  - manual
+  - command

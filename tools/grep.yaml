@@ -1,0 +1,6 @@
+description: File pattern searcher
+tags:
+  - search
+alternatives:
+  - grep
+  - ag
