@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block main %}
+  <div class="container mt-4">
+    <div class="row mb-4">
+      <div class="col text-center">
+        <h1>
+          {{app1.name}}
+          <small class="text-secondary">vs.</small>
+          {{app2.name}}
+        </h1>
+      </div>
+    </div>
+
+    <div class="row  pb-10">
+      <div class="col">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="row">Name</th>
+              <th><a href="/apps/{{app1.name}}">{{app1.name}}</a></th>
+              <th><a href="/apps/{{app2.name}}">{{app2.name}}</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Description</th>
+              <td>{{app1.description}}</td>
+              <td>{{app2.description}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Developer</th>
+              <td><a href="{{app1.developer.website}}">
+                {{app1.developer.name}}</a></td>
+              <td><a href="{{app2.developer.website}}">
+                {{app2.developer.name}}</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Tags</th>
+              <td>
+                {% for tag in app1.tags %}
+                  <span class="badge badge-pill badge-info">{{tag}}</span>
+                {% endfor %}
+              </td>
+              <td>
+                {% for tag in app2.tags %}
+                  <span class="badge badge-pill badge-info">{{tag}}</span>
+                {% endfor %}
+              </td>
+            </tr>
+            {% set changelog1 = sort(app1.changelog, by='utc', reverse=true) %}
+            {% set changelog2 = sort(app2.changelog, by='utc', reverse=true) %}
+            <tr>
+              {% set latestRelease1 = changelog1[0] %}
+              {% set latestRelease2 = changelog2[0] %}
+              <th scope="row">Latest Release</th>
+              <td><a href="{{latestRelease1.url}}">
+                {{latestRelease1.version}} ({{latestRelease1.utc}})
+              </a></td>
+              <td><a href="{{latestRelease2.url}}">
+                {{latestRelease2.version}} ({{latestRelease2.utc}})
+              </a></td>
+            </tr>
+            <tr>
+              {% set firstRelease1 = slice(changelog1, start=-1)[0] %}
+              {% set firstRelease2 = slice(changelog2, start=-1)[0] %}
+              <th scope="row">First Release</th>
+              <td><a href="{{firstRelease1.url}}">
+                {{firstRelease1.version}} ({{firstRelease1.utc}})
+              </a></td>
+              <td><a href="{{firstRelease2.url}}">
+                {{firstRelease2.version}} ({{firstRelease2.utc}})
+              </a></td>
+            </tr>
+            <tr>
+              <th scope="row">Price</th>
+              <td>{{app1.price}} €</td>
+              <td>{{app2.price}} €</td>
+            </tr>
+            <tr>
+              <th scope="row">Website</th>
+              <td><a href="{{app1.website}}">{{app1.website}}</a></td>
+              <td><a href="{{app2.website}}">{{app2.website}}</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Sourcecode</th>
+              <td><a href="{{app1.code}}">{{app1.code}}</a></td>
+              <td><a href="{{app2.code}}">{{app2.code}}</a></td>
+            </tr>
+            <tr>
+              <th scope="row">License</th>
+              <td><a href="{{app1.license.url}}">{{app1.license.name}}</a></td>
+              <td><a href="{{app2.license.url}}">{{app2.license.name}}</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <hr>
+  </div>
+{% endblock %}

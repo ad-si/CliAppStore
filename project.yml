@@ -34,6 +34,12 @@ rules:
       app: 'file://apps/{{name}}/main.yaml'
     template: 'app.html'
 
+  - pattern: '/comparison/{{name1:*}}/{{name2:*}}'
+    data:
+      app1: 'file://apps/{{name1}}/main.yaml'
+      app2: 'file://apps/{{name2}}/main.yaml'
+    template: 'comparison.html'
+
   - pattern: '/apps/{{name:*}}/installation'
     data:
       - app: 'file://apps/{{name}}/main.yaml'
