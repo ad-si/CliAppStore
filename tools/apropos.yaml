@@ -1,7 +1,0 @@
-descriptions: Search the whatis database for strings.
-tags:
-  - manual
-  - command
-
-alternatives:
-  - whatis

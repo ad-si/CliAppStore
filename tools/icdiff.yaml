@@ -1,9 +1,0 @@
-description: Improved colored diff
-tags:
-  - diff
-  - color
-
-alternatives:
-  - diff
-  - diff3
-  - colordiff

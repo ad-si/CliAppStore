@@ -1,4 +1,0 @@
-description: Get type of command (alias, keyword, function, builtin, file).
-tags:
-  - command
-  - inspect
