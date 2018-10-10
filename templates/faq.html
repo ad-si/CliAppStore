@@ -2,18 +2,27 @@
 {% block main %}
   <div class="container">
     <div class="row justify-content-md-center">
-      <div class="col-md-7 py-4" lang="en" style="hyphens: auto">
+      <div class="col-md-7 py-4" lang="en"
+        style="hyphens: auto;">
+        {% set colStyle = "column-count: 2;
+          column-gap: 2em; column-rule: 1px solid #eaeaea;
+          border-bottom: 1px solid #eaeaea" %}
         <h2>Frequently Asked Questions</h2>
         <hr>
         <dl>
-          <dt class="mb-2">Why do I need cliapp.store?</dt>
-          <dd class="mb-4 text-justify" style="column-count:2;">
-            There does not yet exist a good website to discover CLI apps,
-            to find similar / related ones, to compare them and
-            to easily install them.
+          <dt class="pt-3 pb-1">Why do we need cliapp.store?</dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
+            <p>There does not yet exist a good website to discover CLI apps,
+              to find similar / related ones, to compare them and
+              to easily install them.
+            </p>
+            <p>
+              Also there is no easy way for developers to sustainablly fund the
+              development and maintainance of of CLI apps.
+            </p>
           </dd>
-          <dt class="mb-2">Why is this better than a package manager?</dt>
-          <dd class="mb-4 text-justify" style="column-count:2;">
+          <dt class="pt-3 pb-1">Why is it better than a package manager?</dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
             <p>
               Most package managers cater only to one language
               (e.g. npm for JavaScript, pip for Python)
@@ -28,24 +37,8 @@
               of CLI apps.
             </p>
           </dd>
-          <dt class="mb-2">Have you contacted the owners of the apps?</dt>
-          <dd class="mb-4 text-justify" style="column-count:2;">
-            I contacted a few.
-            Some were exited for possible additional revenue streams,
-            some wanted me to donate any profit I would make with their apps
-            to other causes like amnesty international,
-            but most seemed indifferent.
-
-            For free software there is no permission required to distribute
-            it for a fee.
-            Make sure to read
-            <a href="https://www.gnu.org/philosophy/selling.en.html">
-              gnu.org/philosophy/selling
-            </a>
-            for more information.
-          </dd>
-          <dt class="mb-2">Aren't CLI apps always open source and for free?</dt>
-          <dd class="mb-4 text-justify" style="column-count:2;">
+          <dt class="pt-3 pb-1">Aren't CLI apps always open source and for free?</dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
             <p>While many CLI apps are open source / free, we assume
               that a large share of them are accidentally so
               because:
@@ -87,22 +80,98 @@
               </li>
             </ul>
           </dd>
-          <dt class="mb-2">How does it work?</dt>
-          <dd class="mb-4 text-justify" style="column-count:2;">
+          <dt class="pt-3 pb-1">
+            Have you contacted the developers of all apps?
+          </dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
+            I contacted a few.
+            Some were exited for possible additional revenue streams,
+            some wanted me to donate any profit I would make with their apps
+            to other causes like amnesty international,
+            but most seemed indifferent.
+
+            For free software there is no permission required to distribute
+            it for a fee.
+            Make sure to read
+            <a href="https://www.gnu.org/philosophy/selling.en.html">
+              gnu.org/philosophy/selling
+            </a>
+            for more information.
+          </dd>
+          <dt class="pt-3 pb-1">How does it work?</dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
             After the payment process you get redirected to the installation page.
             At the moment it lists all the possible installation methods.
             In the future cliapp.store will provide an extra package manger
             with an additional focus on performance and security
             and ease of use.
           </dd>
-          <dt class="mb-2">What are the payment conditions?</dt>
-          <dd class="mb-4 text-justify" style="column-count:2;">
+          <dt class="pt-3 pb-1">Is it legal to offer free / open source apps?</dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
+            Yes, it is legal and even encouraged by the
+            Free Software Foundation.
+            Make sure to read
+            <a href="https://www.gnu.org/philosophy/selling.en.html">
+              gnu.org/philosophy/selling
+            </a>
+            for more information.
           </dd>
-          <dt class="mb-2">How can I submit an app?</dt>
-          <dd class="mb-4 text-justify" style="column-count:2;">
+          <dt class="pt-3 pb-1">What are the payment conditions?</dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
+            <p>For donations:</p>
+            <ul>
+              <li>19 % German VAT</li>
+              <li>Of the remaining 81 %
+                <ul>
+                  <li>60 % go to the developer of the app</li>
+                  <li>20 % go to the maintainer of the app in order to keep the
+                    app's page up to date</li>
+                  <li>20 % go to us (Feram GmbH) in order to power cliapp.store
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p>For purchases:</p>
+            <ul>
+              <li>19 % German VAT</li>
+              <li>Of the remaining 81 %
+                <ul>
+                  <li>80 % go to the developer of the app</li>
+                  <li>20 % go to us (Feram GmbH) in order to power cliapp.store
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p>Furthermore, each app can define their own license terms
+              regarding the purchase.
+            </p>
+            <p>
+              The amounts are not transferred immediately,
+              but aggregated until a threshold of 10 € is exceeded
+              to reduce transaction costs.
+            </p>
           </dd>
-          <dt class="mb-2">How can I claim stewardship of an app?</dt>
-          <dd class="mb-4 text-justify" style="column-count:2;">
+          <dt class="pt-3 pb-1">How can I submit an app?</dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
+            By submitting a Pull Request to the
+            <a href="https://github.com/feramhq/cli-apps">cli-apps</a>
+            repository.
+            Check out
+            <a href="https://github.com/feramhq/cli-apps/#submit-a-new-app">
+              cli-apps/submit-a-new-app
+            </a>
+            for a detailed explanation.
+          </dd>
+          <dt class="pt-3 pb-1">How can I claim stewardship of an app?</dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
+            By submitting a Pull Request to the
+            <a href="https://github.com/feramhq/cli-apps">cli-apps</a>
+            repository.
+            Check out
+            <a href="https://github.com/feramhq/cli-apps/#claim-stewardship">
+              cli-apps/claim-stewardship
+            </a>
+            for a detailed explanation.
           </dd>
         </dl>
 
