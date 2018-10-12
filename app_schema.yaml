@@ -36,6 +36,7 @@ definitions:
         items: {type: string}
       website: {type: string}
       code: {type: string}
+      language: {type: string}
       issues: {type: string}
       license:
         type: object
@@ -94,6 +95,14 @@ definitions:
                 name: {type: string}
                 url: {type: string}
                 description: {type: string}
+      communities:
+        type: array
+        items:
+          type: object
+          required: [name, url]
+          properties:
+            name: {type: string}
+            url: {type: string}
       screenshots:
         type: array
         items: {type: string}
