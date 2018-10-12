@@ -409,6 +409,9 @@
       <div class="col">
         <h4 class="mb-3">Information</h4>
 
+        {% set prettify = (value) ->
+          value | replace('https://www.', '') | replace('https://', '') %}
+
         <table class="table table-borderless">
           <tbody>
             <tr>
@@ -435,20 +438,20 @@
             </tr>
             <tr>
               <th scope="row">App Website</th>
-              <td><a href="{{app.website}}">{{app.website}}</a></td>
+              <td><a href="{{app.website}}">{{app.website | prettify}}</a></td>
             </tr>
             <tr>
               <th scope="row">Sourcecode</th>
-              <td><a href="{{app.code}}">{{app.code}}</a></td>
+              <td><a href="{{app.code}}">{{app.code | prettify}}</a></td>
             </tr>
             <tr>
               <th scope="row">Issue Tracker</th>
-              <td><a href="{{app.issues}}">{{app.issues}}</a></td>
+              <td><a href="{{app.issues}}">{{app.issues | prettify}}</a></td>
             </tr>
             <tr>
               <th scope="row">Developer Website</th>
               <td><a href="{{app.developer.website}}">
-                {{app.developer.website}}
+                {{app.developer.website | prettify}}
               </a></td>
             </tr>
             <tr>
