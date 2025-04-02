@@ -1,0 +1,82 @@
+apt:
+  url: https://wiki.debian.org/Apt
+
+bpkg:
+  url: http://www.bpkg.sh/
+
+cargo:
+  url: https://crates.io/
+
+chocolatey:
+  url: https://chocolatey.org/
+
+chromebrew:
+  url: http://skycocker.github.io/chromebrew/
+
+cpanm:
+  url: https://metacpan.org/pod/distribution/App-cpanminus/bin/cpanm
+
+curl:
+  url: https://curl.haxx.se/
+  slug: curl
+
+dnf:
+  url: https://rpm-software-management.github.io/
+
+docker:
+  url: https://www.docker.com/
+
+gem:
+  url: https://rubygems.org/
+
+go:
+  url: https://golang.org/cmd/go/#hdr-Download_and_install_packages_and_dependencies
+
+homebrew:
+  url: https://brew.sh/
+  slug: homebrew
+
+layman:
+  url: https://wiki.gentoo.org/wiki/Layman
+
+macports:
+  url: https://www.macports.org/
+
+nix:
+  url: https://nixos.org/nix/
+
+npm:
+  url: https://www.npmjs.com/
+
+pacman:
+  url: https://wiki.archlinux.org/index.php/pacman
+
+pip:
+  url: https://pypi.org/project/pip/
+
+pkg:
+  url: https://www.freebsd.org/doc/handbook/pkgng-intro.html
+
+portage:
+  url: https://wiki.gentoo.org/wiki/Project:Portage
+
+sbopkg:
+  url: https://sbopkg.org/
+
+snapcraft:
+  url: https://snapcraft.io/
+
+stackage:
+  url: https://www.stackage.org/
+
+xbps:
+  url: https://wiki.voidlinux.eu/XBPS
+
+yaourt:
+  url: https://wiki.archlinux.de/title/Yaourt
+
+yum:
+  url: http://yum.baseurl.org/
+
+zypper:
+  url: https://en.opensuse.org/Portal:Zypper

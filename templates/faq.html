@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% block main %}
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-7 py-4" lang="en"
+        style="hyphens: auto;">
+        {% set colStyle = "column-count: 2;
+          column-gap: 2em; column-rule: 1px solid #eaeaea;
+          border-bottom: 1px solid #eaeaea" %}
+        <h2>Frequently Asked Questions</h2>
+        <hr>
+        <dl>
+          <dt class="pt-3 pb-1">Why do we need cliapp.store?</dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
+            <p>There does not yet exist a good website to discover CLI apps,
+              to find similar / related ones, to compare them and
+              to easily install them.
+            </p>
+            <p>
+              Also there is no easy way for developers to sustainable fund the
+              development and maintenance of CLI apps.
+            </p>
+          </dd>
+          <dt class="pt-3 pb-1">Why is it better than a package manager?</dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
+            <p>
+              Most package managers cater only to one language
+              (e.g. npm for JavaScript, pip for Python)
+              or to one ecosystem
+              (e.g. Homebrew for MacOS, Chocolatey for Windows).
+              Furthermore they often lack a GUI to simplify the browsing
+              of the provided apps.
+            </p>
+            <p>
+              Cliapp.store aims to be a cross language and cross platform
+              app store to simplify the discovery, installation and management
+              of CLI apps.
+            </p>
+          </dd>
+          <dt class="pt-3 pb-1">Aren't CLI apps always open source and for free?</dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
+            <p>While many CLI apps are open source / free, we assume
+              that a large share of them are accidentally so
+              because:
+            </p>
+            <ul>
+              <li>There is no other way to publish them
+                and to make them available.
+              </li>
+              <li>It's cumbersome to build a dedicated website and webshop
+                to sell an app
+              </li>
+              <li>Developers open source the apps
+                as a means of self marketing
+                although the payoff does not properly reflect the effort.
+              </li>
+              <li>Large companies can cross fund the development or
+                write off the expenses as marketing, which drives out
+                independent developers.
+              </li>
+            </ul>
+            <p>
+              And an even larger number of CLI apps probably just hasn't been
+              published yet.
+              Among the reasons for this is that Developers …
+            </p>
+            <ul>
+              <li>… build the apps only for themselves
+                and never publish them due to a lack of incentives.
+              </li>
+              <li>… only partly finish the apps due to insufficient funding
+              </li>
+              <li>… can not afford to maintain them after a release.
+              </li>
+              <li>… add unnecessary GUIs / wrappers to the CLI apps
+                and sell them in desktop / alternative app stores instead.
+              </li>
+              <li>… sell the CLI apps as a SaaS product although
+                they are more suited for direct licensing.
+              </li>
+            </ul>
+          </dd>
+          <dt class="pt-3 pb-1">
+            Have you contacted the developers of all apps?
+          </dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
+            I contacted a few.
+            Some were exited for possible additional revenue streams,
+            some wanted me to donate any profit I would make with their apps
+            to other causes like amnesty international,
+            but most seemed indifferent.
+
+            For free software there is no permission required to distribute
+            it for a fee.
+            Make sure to read
+            <a href="https://www.gnu.org/philosophy/selling.en.html">
+              gnu.org/philosophy/selling
+            </a>
+            for more information.
+          </dd>
+          <dt class="pt-3 pb-1">Is it legal to offer free / open source apps?</dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
+            Yes, it is legal and even encouraged by the
+            Free Software Foundation.
+            Make sure to read
+            <a href="https://www.gnu.org/philosophy/selling.en.html">
+              gnu.org/philosophy/selling
+            </a>
+            for more information.
+          </dd>
+          <dt class="pt-3 pb-1">How does it work?</dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
+            After the payment process you get redirected to the installation page.
+            At the moment it lists all the possible installation methods.
+            In the future cliapp.store will provide an extra package manger
+            with an additional focus on performance and security
+            and ease of use.
+          </dd>
+          <dt class="pt-3 pb-1">What are the payment conditions?</dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
+            <p>For donations:</p>
+            <ul>
+              <li>19 % German VAT</li>
+              <li>Of the remaining 81 %
+                <ul>
+                  <li>60 % go to the developer of the app</li>
+                  <li>20 % go to the maintainer of the app in order to keep the
+                    app's page up to date</li>
+                  <li>20 % go to us (Feram GmbH) in order to power cliapp.store
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p>For purchases:</p>
+            <ul>
+              <li>19 % German VAT</li>
+              <li>Of the remaining 81 %
+                <ul>
+                  <li>80 % go to the developer of the app</li>
+                  <li>20 % go to us (Feram GmbH) in order to power cliapp.store
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p>Furthermore, each app can define their own license terms
+              regarding the purchase.
+            </p>
+            <p>
+              The amounts are not transferred immediately,
+              but aggregated until a threshold of 10 € is exceeded
+              to reduce transaction costs.
+            </p>
+          </dd>
+          <dt class="pt-3 pb-1">How can I submit an app?</dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
+            By submitting a Pull Request to the
+            <a href="https://github.com/feramhq/cli-apps">cli-apps</a>
+            repository.
+            Check out
+            <a href="https://github.com/feramhq/cli-apps/#submit-a-new-app">
+              cli-apps/submit-a-new-app
+            </a>
+            for a detailed explanation.
+          </dd>
+          <dt class="pt-3 pb-1">How can I claim stewardship of an app?</dt>
+          <dd class="pt-2 pb-4 text-justify" style="{{colStyle}}">
+            By submitting a Pull Request to the
+            <a href="https://github.com/feramhq/cli-apps">cli-apps</a>
+            repository.
+            Check out
+            <a href="https://github.com/feramhq/cli-apps/#claim-stewardship">
+              cli-apps/claim-stewardship
+            </a>
+            for a detailed explanation.
+          </dd>
+        </dl>
+
+        <a href="/comparison/hledger/transity"></a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

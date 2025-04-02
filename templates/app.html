@@ -1,0 +1,575 @@
+{% extends "base.html" %}
+{% block main %}
+  <div class="container mt-4">
+    <div class="jumbotron py-4">
+      <div class="row">
+        <div class="col-sm-5 text-center">
+          <img
+            class="img-fluid mb-3"
+            src="/apps/{{app.slug}}/main.png"
+            alt="Screenshot of CLI app {{app.name}}"
+          >
+        </div>
+
+        <div class="col-sm">
+          <a
+            href="https://github.com/feramhq/cli-apps/edit/master/{{app.slug}}/main.yaml"
+            class="btn btn-outline-secondary float-right"
+          >
+            Propose Changes
+          </a>
+
+          <h1>{{app.name}}</h1>
+
+          <p class="text-secondary">{{app.description}}</p>
+
+          <p>
+            {{ app.maintainer ? "Developed by" : "By" }}
+            <a href="{{app.developer.website}}">{{app.developer.name}}</a>
+          </p>
+
+          {% if app.maintainer %}
+            <p>
+              Maintained by
+              <a href="{{app.maintainer.website}}">{{app.maintainer.name}}</a>
+              <a
+                class="btn btn-sm btn-outline-secondary align-baseline ml-2"
+                href="https://github.com/feramhq/cli-apps/#claim-stewardship"
+              >
+                Claim Stewardship
+              </a>
+            </p>
+          {% endif %}
+
+          <a href="/apps/{{app.slug}}/installation" class="d-none"></a>
+
+          <form
+            id="paymentForm"
+            method="post"
+            action="https://www.paypal.com/cgi-bin/webscr"
+          >
+            <input type="hidden" name="business" value="adrian@feram.io">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="item_name" value="{{app.name}}">
+            <input type="hidden" name="amount" value="{{app.price}}">
+            <input type="hidden" name="currency_code" value="EUR">
+            <input type="hidden" name="image_url"
+              value="https://avatars0.githubusercontent.com/u/19747323?s=80">
+            <input type="hidden" name="no_shipping" value="1">
+            <input type="hidden" name="return"
+              value="https://cliapp.store/apps/{{app.slug}}/installation">
+
+            <style>
+              .payment_button {
+                background-color: #ffc439;
+              }
+            </style>
+
+            {% if app.price %}
+              <button
+                type="submit"
+                class="btn font-weight-bold payment_button mb-2"
+              >
+                <span
+                  class="d-inline-block align-middle pr-2
+                    border-right border-secondary"
+                >
+                  <!-- Do not split over several lines
+                    to avoid whitespace bugs -->
+                  {{app.price}} €</span><span class="pl-2 align-middle">Buy with
+                    {% include "_paypal_icon.html" %}
+                </span>
+              </button>
+              <small class="text-secondary d-block mb-2">
+                After the payment you'll be redirected
+                to the installation page
+              </small>
+            {% else %}
+              <p>
+                <strong>Donate and Install</strong>
+                <br>
+                <small class="text-secondary">
+                  After the donation you'll be redirected
+                  to the installation page
+                </small>
+              </p>
+
+              <div id="donateButtons">
+                <button type="submit"
+                  class="btn font-weight-bold payment_button"
+                  data-amount="1"
+                >1 €</button>
+                <button type="submit"
+                  class="btn font-weight-bold payment_button"
+                  data-amount="3"
+                >3 €</button>
+                <button type="submit"
+                  class="btn font-weight-bold payment_button"
+                  data-amount="5"
+                >5 €</button>
+                <button type="submit"
+                  class="btn font-weight-bold payment_button"
+                  data-amount="10"
+                >10 €</button>
+              </div>
+
+              <script>
+                const buttonsDiv = document.getElementById('donateButtons')
+                buttonsDiv.addEventListener('click', event => {
+                  if (event.target.nodeName === 'BUTTON') {
+                    document
+                      .getElementsByName('amount')[0]
+                      .value = event.target.dataset.amount
+                  }
+                })
+              </script>
+            {% endif %}
+          </form>
+
+          <div class="text-secondary mt-2">
+            <p>
+              {% if app.price == 0 %}
+                <small>
+                  <a href="#freeModal"
+                    data-toggle="modal" class="text-secondary"
+                  >
+                    I really can't afford a donation
+                  </a>
+                </small>
+              {% endif %}
+              {% if app.has_free_trail && app.price != 0 %}
+                <small>
+                  <a href="#trialModal"
+                    data-toggle="modal" class="text-secondary"
+                  >
+                    Free trial version
+                  </a>
+                </small>
+              {% endif %}
+              <span class="mx-1">|</span>
+              <small>
+                <a href="#pricingModal"
+                  data-toggle="modal" class="text-secondary"
+                >
+                  {{ app.price ? "Payment" : "Donation" }} Info
+                </a>
+              </small>
+            </p>
+          </div>
+
+          <div id="pricingModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">
+                    {{ app.price ? "Payment" : "Donation" }} Info
+                  </h5>
+                  <button type="button" class="close"
+                    data-dismiss="modal" aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    The {{ app.price ? "payment" : "donation" }}
+                    is composed of following parts:
+                  </p>
+                  {% set frac_vat = 0.19 %}
+                  {% set frac_store = 0.2 %}
+                  {% set frac_maintainer = app.maintainer ? 0.2 : 0 %}
+                  {% set frac_developer = 1 - frac_store - frac_maintainer %}
+
+                  {% set value_vat = round(app.price * frac_vat * 100) / 100 %}
+                  {% set value_net = app.price - value_vat %}
+                  {% set value_store =
+                    round(value_net * frac_store * 100) / 100 %}
+                  {% set value_maintainer =
+                    round(value_net * frac_maintainer * 100) / 100 %}
+                  {% set value_developer = value_net - value_store %}
+                  <ul>
+                    <li>
+                      <strong>19 %</strong>
+                      {% if app.price %}({{value_vat}} €){% endif %}
+                      is German VAT
+                    </li>
+                    <li>
+                      Of the remaining 81 %
+                      {% if app.price %}({{value_net}} €){% endif %}
+                      <ul>
+                        <li>
+                          <strong>{{frac_developer * 100}} %</strong>
+                          {% if app.price %}({{value_developer}} €){% endif %}
+                          go to the developer of the app
+                          (<a href="{{app.developer.website}}">{{
+                            app.developer.name}}</a>).
+                        </li>
+                        {% if app.maintainer %}
+                          <li>
+                            <strong>{{frac_maintainer * 100}} %</strong>
+                            {% if app.price %}({{value_store}} €){% endif %}
+                            go to the maintainer of the app
+                            (<a href="{{app.maintainer.website}}">{{
+                              app.maintainer.name}}</a>)
+                            in order to keep this app's page up to date.
+                          </li>
+                        {% endif %}
+                        <li>
+                          <strong>{{frac_store * 100}} %</strong>
+                          {% if app.price %}({{value_store}} €){% endif %}
+                          go to us (<a href="https://feram.io">Feram GmbH</a>)
+                          in order to power cliapp.store.
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <small>
+                    The amounts are not transferred immediately,
+                    but aggregated until a threshold of 10 € is exceeded
+                    to reduce transaction costs.
+                  </small>
+                  {% if app.license_terms %}
+                    <hr>
+                    <p>{{app.license_terms | markdown}}</p>
+                  {% endif %}
+                </div>
+                <div class="modal-footer">
+                  <button type="button"
+                    class="btn btn-secondary" data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="freeModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Free Version</h5>
+                  <button type="button" class="close"
+                    data-dismiss="modal" aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    While {{app.name}} is also freely available and therefore
+                    you're not obliged to donate anything to use it,
+                    please bear in mind that it's a lot of effort
+                    to develop {{app.name}} and cliapp.store.
+                  </p>
+                  <p><strong>
+                    We and the developers of {{app.name}} depend on your
+                    financial support to be able
+                    to maintain and extend {{app.name}} and cliapp.store
+                    in the future!
+                  </strong></p>
+                </div>
+                <div class="modal-footer">
+                  <a
+                    href="/apps/{{app.slug}}/installation"
+                    class="btn btn-primary"
+                  >
+                    I understand, forward me to the installation page
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="trialModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Free Trial Version</h5>
+                  <button type="button" class="close"
+                    data-dismiss="modal" aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p><strong>
+                    You can try out {{app.name}} for free.
+                    To use it regularly, you must buy a license.
+                  </strong></p>
+                  <p>
+                    There is no way for us to enforce this,
+                    but we're counting on your honesty to
+                    acknowledge when you should pay for it.
+                  </p>
+                  {% if app.license_terms %}
+                    <hr>
+                    <p>{{app.license_terms | markdown}}</p>
+                  {% endif %}
+                </div>
+                <div class="modal-footer">
+                  <a
+                    href="/apps/{{app.slug}}/installation"
+                    class="btn btn-primary"
+                  >
+                    I understand, forward me to the installation page
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="row mb-5">
+      <div class="col">
+        <h4>Screenshots</h4>
+
+        <div class="container bg-secondary px-2 pt-2 rounded">
+          <div
+            id="screenshotsCarousel"
+            class="carousel slide mb-2"
+            data-ride="false"
+          >
+            <div class="carousel-inner">
+              {% for screenshot in app.screenshots %}
+                <div class="carousel-item
+                  {% if loop.index == 1 %}active{% endif %}"
+                >
+                  <img
+                    class="d-block mx-auto"
+                    style="height: 20em"
+                    src="/apps/{{app.slug}}/{{screenshot}}"
+                    alt="Screenshot">
+                </div>
+              {% endfor %}
+            </div>
+
+            {% if length(app.screenshots) > 1 %}
+              <a
+                class="carousel-control-prev"
+                href="#screenshotsCarousel"
+                role="button"
+                data-slide="prev"
+              >
+                <span class="carousel-control-prev-icon" aria-hidden="true">
+                </span>
+                <span class="sr-only">Previous</span>
+              </a>
+
+              <a
+                class="carousel-control-next"
+                href="#screenshotsCarousel"
+                role="button"
+                data-slide="next"
+              >
+                <span class="carousel-control-next-icon" aria-hidden="true">
+                </span>
+                <span class="sr-only">Next</span>
+              </a>
+            {% endif %}
+
+          </div>
+
+          <hr>
+
+          <ol class="nav justify-content-around
+                d-flex flex-row flex-wrap align-content-center"
+          >
+            {% for screenshot in app.screenshots %}
+              <li
+                class="nav-item {% if loop.index == 1 %}active{% endif %}"
+                data-target="#screenshotsCarousel"
+                data-slide-to="{{loop.index0}}"
+              >
+                <img
+                  class="mb-2"
+                  style="height: 5em"
+                  src="/apps/{{app.slug}}/{{screenshot}}"
+                  alt="Screenshot"
+                >
+              </li>
+            {% endfor %}
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col">
+        <h4 class="mb-3">Description</h4>
+
+        <p>{{app.description_long | markdown}}</p>
+      </div>
+
+      <div class="col">
+        <h4 class="mb-3">Information</h4>
+
+        {% set prettify = (value) ->
+          value | replace('https://www.', '') | replace('https://', '') %}
+
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th scope="row">Tags</th>
+              <td>
+                {% for tag in app.tags %}
+                  <span class="badge badge-pill badge-info">{{tag}}</span>
+                {% endfor %}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Version</th>
+              <td>{{app.changelog[0].version}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Price</th>
+              <td>
+                {% if app.price %}
+                  {{app.price | capitalize}} €
+                {% else %}
+                  Free
+                {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">App Website</th>
+              <td><a href="{{app.website}}">{{app.website | prettify}}</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Sourcecode</th>
+              <td><a href="{{app.code}}">{{app.code | prettify}}</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Issue Tracker</th>
+              <td><a href="{{app.issues}}">{{app.issues | prettify}}</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Developer Website</th>
+              <td><a href="{{app.developer.website}}">
+                {{app.developer.website | prettify}}
+              </a></td>
+            </tr>
+            <tr>
+              <th scope="row">License</th>
+              <td><a href="{{app.license.url}}">
+                {{app.license.name}}
+              </a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h4 class="mb-3">Changelog</h4>
+
+        <p>
+          For more details, check out the
+          <a href="{{app.changelog_url}}">external changelog</a>.
+        </p>
+
+        <ol class="list-unstyled">
+          {% for release in app.changelog %}
+            <li
+              class="my-2 pt-3 border-top
+                {% if loop.index != 1 %}
+                  collapse is-collapsible
+                {% endif %}"
+            >
+              <h5>{{app.name}} <small>{{release.version}}</small></h5>
+              <p>
+                <small class="text-secondary">
+                  {% if release.url %}<a href="{{release.url}}">{% endif %}
+                    Released on {{release.utc}}
+                  {% if release.url %}</a>{% endif %}
+                </small>
+              </p>
+
+              {% if release.changes %}
+                <ul
+                  class="text-secondary"
+                  style="list-style-type: disc"
+                >
+                  {% for change in release.changes %}
+                    <li>{{change}}</li>
+                  {% endfor %}
+                </ul>
+              {% else %}
+                <div class="text-secondary">
+                  {{release.description | markdown}}
+                </div>
+              {% endif %}
+            </li>
+          {% endfor %}
+          <li>
+            <hr>
+            <a class="d-block" data-toggle="collapse" href=".is-collapsible,#show-more,#show-less">
+              <div id="show-less" class="collapse">
+                Less <span style="font-size: 0.7em">▲</span>
+              </div>
+              <div id="show-more" class="collapse show">
+                Older Versions <span style="font-size: 0.7em">▼</span>
+              </div>
+            </a>
+          </li>
+        </ol>
+      </div>
+
+      <div class="col">
+        <h4 class="mb-3">Similar Apps</h4>
+
+        <ul class="list-unstyled">
+          {% for similarApp in app.similar %}
+            <li class="media">
+              {% if similarApp.slug %}
+                <a href="/apps/{{similarApp.slug}}">
+                  <img
+                    src="/apps/{{similarApp.slug}}/main.png"
+                    alt="Image of app"
+                    class="mr-3"
+                    width="48px"
+                  >
+                </a>
+              {% else %}
+                <a href="{{similarApp.url}}">
+                  <img
+                    src="/images/app.svg"
+                    width="48px"
+                    height="48px"
+                    alt="Image of app"
+                    class="mr-3"
+                  >
+                </a>
+              {% endif %}
+              <div class="media-body">
+                {% if similarApp.slug %}
+                  <a class="text-dark" href="/apps/{{similarApp.slug}}">
+                    <h5 class="mt-0 mb-1">{{similarApp.name}}</h5>
+                  </a>
+                {% else %}
+                  <a class="text-dark" href="{{similarApp.url}}">
+                    <h5 class="mt-0 mb-1">{{similarApp.name}}</h5>
+                  </a>
+                {% endif %}
+                <p>{{similarApp.description}}</p>
+              </div>
+              </a>
+            </li>
+          {% else %}
+            <p class="text-secondary">
+              There are no similar apps available yet.
+            </p>
+            <a href="{{submit_url}}" class="btn btn-light">Submit One</a>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{
+  "name": "cliappstore",
+  "version": "0.0.0",
+  "description": "An app store for CLI apps.",
+  "main": "project.yml",
+  "devDependencies": {
+    "carbon-now-cli": "^1.1.0",
+    "pajv": "^1.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feramhq/cli-apps.git"
+  },
+  "keywords": [
+    "cli",
+    "app",
+    "store"
+  ],
+  "author": "Adrian Sieber",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/feramhq/cli-apps/issues"
+  },
+  "homepage": "https://github.com/feramhq/cli-apps#readme"
+}

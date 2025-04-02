@@ -1,0 +1,53 @@
+data:
+
+rules:
+  - pattern: '/'
+    data:
+      # apps: 'https://api.github.com/repos/feramhq/cli-apps/contents/apps'
+      apps:
+        type: file
+        fetch: all
+        path: './apps/*/main.yaml'
+        order: -mtime
+    template: 'index.html'
+
+  - pattern: '/favicon.ico'
+    static: true
+    data:
+      file: 'file://./favicon.ico'
+
+  - pattern: '/faq'
+    template: 'faq.html'
+
+  - pattern: '/static/{{path:**}}'
+    static: true
+    data:
+      file: 'file://./static/{{path}}'
+
+  - pattern: '/images/{{path:**}}'
+    static: true
+    data:
+      file: 'file://./images/{{path}}'
+
+  - pattern: '/apps/{{name:*}}'
+    data:
+      app: 'file://apps/{{name}}/main.yaml'
+    template: 'app.html'
+
+  - pattern: '/comparison/{{name1:*}}/{{name2:*}}'
+    data:
+      app1: 'file://apps/{{name1}}/main.yaml'
+      app2: 'file://apps/{{name2}}/main.yaml'
+    template: 'comparison.html'
+
+  - pattern: '/apps/{{name:*}}/installation'
+    data:
+      - app: 'file://apps/{{name}}/main.yaml'
+      - package_managers: 'file://package_managers.yaml'
+
+    template: 'installation.html'
+
+  - pattern: '/apps/{{appName:*}}/{{fileName:**}}'
+    static: true
+    data:
+      - file: 'file://./apps/{{appName}}/{{fileName}}'

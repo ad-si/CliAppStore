@@ -1,0 +1,13 @@
+<svg
+  viewBox="0 0 32 32"
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+  <g fill="rgb(223,36,63)">
+    <circle r="5" cx="8" cy="8"/>
+    <circle r="5" cx="24" cy="8"/>
+    <circle r="5" cx="8" cy="24"/>
+    <circle r="5" cx="24" cy="24"/>
+  </g>
+</svg>
