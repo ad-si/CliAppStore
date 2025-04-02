@@ -1,6 +1,11 @@
+.PHONY: help
+help: makefile
+	@tail -n +4 makefile | grep ".PHONY"
+
+
 # TODO: Use wildcards
-.PHONY: all
-all: \
+.PHONY: build
+build: \
 	apps/ag/main.png \
 	apps/asciinema/main.png \
 	apps/bat/main.png \
@@ -29,13 +34,14 @@ all: \
 	# apps/postgrest/main.png \
 	# apps/exa/main.png \
 
+
 apps/%/main.png:
 	cat $(@D)/main.yaml \
 	| grep '^command: ' \
 	| gsed "s/^command: ['\"]\(.*\)['\"]$$/\1/" \
 	> __temp__.sh
 	cp carbon-now.json ~/.carbon-now.json
-	npx carbon-now \
+	npx carbon-now-cli \
 		--preset=cliappstore \
 		--location $(@D) \
 		__temp__.sh
@@ -47,13 +53,16 @@ baked: apps images templates project.yml
 	sprinkles -bake
 	cp CNAME baked/CNAME
 
+
 .PHONY: deploy
 deploy: baked
 	surge baked
 
+
 .PHONY: stage
 stage: baked
 	surge baked cliappstore.surge.sh
+
 
 .PHONY: validate
 validate:
