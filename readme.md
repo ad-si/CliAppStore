@@ -55,7 +55,7 @@ and use the [Live Reload] Firefox plugin to auto reload the website.
 
 - [Terminal Trove] - Curated showcase for everything in the terminal.
 
-[Terminal Trove](https://terminaltrove.com/)
+[Terminal Trove]: https://terminaltrove.com/
 
 
 ## TODO
