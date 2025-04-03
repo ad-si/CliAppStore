@@ -1,0 +1,12 @@
+state: draft
+name: Wttr
+slug: wttr
+description: Weather forecast service
+website: https://wttr.in
+code: https://github.com/chubin/wttr.in
+issues: https://github.com/chubin/wttr.in/issues
+license: Apache-2.0
+price: 0
+command: 'curl wttr.in/Berlin'
+installation:
+  default: curl wttr.in

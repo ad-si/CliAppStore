@@ -4,7 +4,6 @@
   "description": "An app store for CLI apps.",
   "main": "project.yml",
   "devDependencies": {
-    "carbon-now-cli": "^1.1.0",
     "pajv": "^1.2.0"
   },
   "scripts": {
